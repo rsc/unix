@@ -1,0 +1,126 @@
+nop
+now ~
+ccc
+now ~
+nop
+now ~
+scc
+now nzvc=1111
+nop
+now nzvc=1111
+
+scc
+clc
+now nzvc=1110
+
+scc
+clv
+now nzvc=1101
+
+scc
+clvc
+now nzvc=1100
+
+scc
+clvc
+now nzvc=1100
+
+scc
+clz
+now nzvc=1011
+
+scc
+clzc
+now nzvc=1010
+
+scc
+clzv
+now nzvc=1001
+
+scc
+clzvc
+now nzvc=1000
+
+scc
+cln
+now nzvc=0111
+
+scc
+clnc
+now nzvc=0110
+
+scc
+clnv
+now nzvc=0101
+
+scc
+clnvc
+now nzvc=0100
+
+scc
+clnz
+now nzvc=0011
+
+scc
+clnzc
+now nzvc=0010
+
+scc
+clnzv
+now nzvc=0001
+
+ccc
+snop
+now ~
+
+ccc
+sec
+now nzvc=0001
+
+ccc
+sev
+now nzvc=0010
+
+ccc
+sevc
+now nzvc=0011
+
+ccc
+sez
+now nzvc=0100
+
+ccc
+sezc
+now nzvc=0101
+
+ccc
+sezv
+now nzvc=0110
+
+ccc
+sezvc
+now nzvc=0111
+
+ccc
+sen
+now nzvc=1000
+
+ccc
+senc
+now nzvc=1001
+
+ccc
+senv
+now nzvc=1010
+
+ccc
+senvc
+now nzvc=1011
+
+ccc
+senz
+now nzvc=1100
+
+ccc
+senzv
+now nzvc=1110

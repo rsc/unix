@@ -1,0 +1,13 @@
+mov #5, r1
+now r1=000005
+
+mov #0, r2
+now nzvc=0100
+
+nop
+now ~
+
+mov #1, r1
+mov #10000, sp
+movb r1, -(sp)
+now r1=000001 sp=007776 *007776=070401

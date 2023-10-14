@@ -1,0 +1,22 @@
+// sob decrements and jumps unless the result is zero
+
+mov #1, r2
+sob r2, 007770
+now ~
+
+mov #0, r2
+sob r2, 007770
+now r2=177777 pc=007770 nzvc=0100
+
+mov #-1, r2
+sob r2, 007770
+now r2=177776 pc=007770 nzvc=1000
+
+mov #100000, r2
+sob r2, 007770
+now r2=077777 pc=007770 nzvc=1000
+
+mov #077777, r2
+sob r2, 007770
+now r2=077776 pc=007770
+
