@@ -58,14 +58,25 @@ func Asm(pc uint16, text string) (codes []uint16, err error) {
 			out[0] |= uint16(parseReg(arg)) << 6
 		case "%R": // register number at bit 0
 			out[0] |= uint16(parseReg(arg)) << 0
-		case "%d":
-			out = parseArg(pc, arg, 0, out)
-		case "%s":
-			out = parseArg(pc, arg, 6, out)
+		case "%d": // destination
+			out = parseArg(pc, arg, 0, false, out)
+		case "%s": // source
+			out = parseArg(pc, arg, 6, false, out)
+		case "%f": // fdst/fsrc
+			out = parseArg(pc, arg, 0, true, out)
+		case "%a": // accumulator index
+			out[0] |= parseAC(arg)
 		}
 	}
-
 	return out, nil
+}
+
+func parseAC(arg string) uint16 {
+	switch arg {
+	case "f0", "f1", "f2", "f3":
+		return uint16(arg[1]-'0') << 6
+	}
+	panic("invalid float accumulator")
 }
 
 func parseReg(arg string) RegNum {
@@ -90,13 +101,17 @@ func parseConst(arg string) uint16 {
 	panic(fmt.Sprintf("invalid constant %q", arg))
 }
 
-func parseArg(pc uint16, arg string, shift uint, codes []uint16) []uint16 {
+func parseArg(pc uint16, arg string, shift uint, fp bool, codes []uint16) []uint16 {
 	if arg == "" {
 		panic("empty arg")
 	}
-	if arg[0] == 'r' || arg[0] == 'p' || arg[0] == 's' {
+	if !fp && (arg[0] == 'r' || arg[0] == 'p' || arg[0] == 's') {
 		r := parseReg(arg)
 		codes[0] |= uint16(r) << shift
+		return codes
+	}
+	if fp && len(arg) == 2 && arg[0] == 'f' && '0' <= arg[1] && arg[1] <= '5' {
+		codes[0] |= uint16(arg[1]-'0') << shift
 		return codes
 	}
 

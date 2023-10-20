@@ -7,6 +7,7 @@ package pdp11
 import (
 	"encoding/binary"
 	"fmt"
+	"math"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -58,7 +59,9 @@ func testExec(t *testing.T, file string) {
 		}
 		regs[PC] = basePC
 		cpu.R = regs
+		clear(cpu.F[:])
 		cpu.PS = 0
+		cpu.FPS = 0
 		codes = codes[:0]
 	}
 
@@ -72,6 +75,14 @@ func testExec(t *testing.T, file string) {
 		}
 		if cpu.PS != 0 {
 			list = append(list, fmt.Sprintf("nzvc=%04b", int(cpu.PS)))
+		}
+		for i := range cpu.F {
+			if f := cpu.F[i]; math.Float64bits(f) != 0 {
+				list = append(list, fmt.Sprintf("f%d=%v", i, f))
+			}
+		}
+		if cpu.FPS != 0 {
+			list = append(list, fmt.Sprintf("fps=%v", cpu.FPS))
 		}
 		for i := 0; i < 1<<16; i += 2 {
 			want := uint16(070707)
@@ -114,6 +125,28 @@ func testExec(t *testing.T, file string) {
 			if have != line {
 				t.Errorf("%s:%d: after %s:\nhave %s\nwant %s", file, i+1, last, have, line)
 				broken = true
+			}
+			continue
+		}
+		if f[0] == "set" {
+			for _, arg := range f[1:] {
+				k, v, ok := strings.Cut(arg, "=")
+				if ok {
+					ok = false
+					switch k {
+					case "f0", "f1", "f2", "f3", "f4", "f5":
+						f, err := strconv.ParseFloat(v, 64)
+						if err == nil {
+							cpu.F[k[1]-'0'] = f
+							ok = true
+						}
+					}
+				}
+				if !ok {
+					t.Errorf("%s:%d: bad set: %s", file, i+1, arg)
+					broken = true
+					break
+				}
 			}
 			continue
 		}

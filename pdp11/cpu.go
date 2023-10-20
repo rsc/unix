@@ -10,10 +10,14 @@ import (
 
 // A CPU represents a single PDP-11 CPU, connected to a memory.
 type CPU struct {
-	R    [8]uint16 // registers
-	PS   PS        // processor status word
-	Inst uint16    // instruction being executed (actual instruction bits)
-	Mem  Memory    // attached memory
+	R    [8]uint16  // registers
+	PS   PS         // processor status word
+	Inst uint16     // instruction being executed (actual instruction bits)
+	Mem  Memory     // attached memory
+	F    [6]float64 // floating-point registers
+	FPS  FPS        // floating point status word
+	FEC  uint8      // fp error code
+	FEA  uint8      // fp exception address
 }
 
 var (

@@ -127,9 +127,34 @@ var itab = []instr{
 	{0o140000, xbicb, "bicb %s, %d"},
 	{0o150000, xbisb, "bisb %s, %d"},
 	{0o160000, xsub, "sub %s, %d"},
-	{0o170000, xbad, ""},
-	{0o170011, xsetd, "setd"}, // untested
-	{0o170012, xbad, ""},
+	{0o170000, xcfcc, "cfcc"}, // untested
+	{0o170001, xsetf, "setf"},
+	{0o170002, xseti, "seti"},
+	{0o170003, xbad, ""},
+	{0o170011, xsetd, "setd"},
+	{0o170012, xsetl, "setl"},
+	{0o170013, xbad, ""},
+	{0o170100, xldfps, "ldfps %f"},
+	{0o170200, xstfps, "stfps %d"},
+	{0o170300, xstst, "stst %d"}, // untested
+	{0o170400, xclrf, "clrf %f"},
+	{0o170500, xtstf, "tstf %f"},
+	{0o170600, xabsf, "absf %f"},
+	{0o170700, xnegf, "negf %f"},
+	{0o171000, xmulf, "mulf %f, %a"},
+	{0o171400, xmodf, "modf %f, %a"},
+	{0o172000, xaddf, "addf %f, %a"},
+	{0o172400, xldf, "ldf %f, %a"},
+	{0o173000, xsubf, "subf %f, %a"},
+	{0o173400, xcmpf, "cmpf %f, %a"},
+	{0o174000, xstf, "stf %a, %f"},
+	{0o174400, xdivf, "divf %f, %a"},
+	{0o175000, xstexp, "stexp %a, %d"},
+	{0o175400, xstcfi, "stcfi %a, %d"},
+	{0o176000, xstcfd, "stcfd %a, %f"},
+	{0o176400, xldexp, "ldexp %d, %a"},
+	{0o177000, xldcif, "ldcif %d, %a"},
+	{0o177400, xldcdf, "ldcdf %f, %a"},
 }
 
 func lookup(inst uint16) *instr {

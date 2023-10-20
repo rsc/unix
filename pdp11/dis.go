@@ -50,6 +50,19 @@ func (cpu *CPU) Disasm(pc uint16) (asm string, next uint16, err error) {
 			if out, next, err = fmtArg(out, cpu, w, next); err != nil {
 				return "", pc, err
 			}
+		case "%a": // fp accumulator
+			out = fmt.Appendf(out, "f%d", (code>>6)&0o3)
+		case "%f": // fsrc/fdst
+			if code&0o70 == 0 {
+				if code&0o07 >= 6 {
+					return "", pc, fmt.Errorf("unknown instruction %06o", code)
+				}
+				out = fmt.Appendf(out, "f%d", code&0o07)
+			} else {
+				if out, next, err = fmtArg(out, cpu, code, next); err != nil {
+					return "", pc, err
+				}
+			}
 		}
 	}
 	return string(out), next, nil

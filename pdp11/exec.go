@@ -60,7 +60,7 @@ func (cpu *CPU) addr(enc, size uint16) addr {
 	if mode == 0 {
 		return addrReg | addr(reg)
 	}
-	if mode&1 != 0 || reg == PC || reg == SP {
+	if mode&1 != 0 || reg == PC || reg == SP && size == 1 {
 		size = 2
 	}
 	a := cpu.R[reg]
@@ -135,6 +135,14 @@ func (cpu *CPU) writeB(a addr, val uint8) {
 
 func (cpu *CPU) dstAddrB() addr { return cpu.addr(cpu.Inst&077, 1) }
 func (cpu *CPU) dstAddrW() addr { return cpu.addr(cpu.Inst&077, 2) }
+func (cpu *CPU) dstAddrL() addr { return cpu.addr(cpu.Inst&077, 4) }
+func (cpu *CPU) dstAddrF() addr {
+	size := uint16(4)
+	if cpu.FPS&FD != 0 {
+		size = 8
+	}
+	return cpu.addr(cpu.Inst&077, size)
+}
 func (cpu *CPU) srcAddrB() addr { return cpu.addr((cpu.Inst>>6)&077, 1) }
 func (cpu *CPU) srcAddrW() addr { return cpu.addr((cpu.Inst>>6)&077, 2) }
 
@@ -687,5 +695,3 @@ func xrti(cpu *CPU)   { panic("rti") }
 func xrtt(cpu *CPU)   { panic("rtt") }
 
 func xwait(cpu *CPU) { panic("wait") }
-
-func xsetd(cpu *CPU) {} // nop

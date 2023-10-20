@@ -1,0 +1,268 @@
+mov #041400, 20000
+mov #000000, 20002
+mov #100000, 20004
+mov #000000, 20006
+ccc
+now *020000=041400 *020002=000000 *020004=100000 *020006=000000
+setf
+ldf 20000, f0
+now f0=32 *020000=041400 *020002=000000 *020004=100000 *020006=000000
+setd
+ldf 20000, f1
+now f0=32 f1=32.00000190734863 fps=d *020000=041400 *020002=000000 *020004=100000 *020006=000000
+ldf f0, f3
+now f0=32 f1=32.00000190734863 f3=32 fps=d *020000=041400 *020002=000000 *020004=100000 *020006=000000
+setf
+ldf f1, f0
+now f0=32 f1=32.00000190734863 f3=32 *020000=041400 *020002=000000 *020004=100000 *020006=000000
+
+set f1=32
+stf f1, 20000
+now f1=32 *020000=041400 *020002=000000
+
+set f1=32.00000190734863
+stf f1, 20000
+now f1=32.00000190734863 *020000=041400 *020002=000000
+
+set f1=32.00000190734863
+setd
+stf f1, 20000
+now f1=32.00000190734863 fps=d *020000=041400 *020002=000000 *020004=100000 *020006=000000
+
+set f1=0.1
+stf f1, 20000
+now f1=0.1 *020000=037314 *020002=146314
+ldf 20000, f1
+now f1=0.09999999403953552 *020000=037314 *020002=146314
+
+// bug: should be *020006=146314 but ieee float64 have fewer mantissa bits than pdp11
+set f1=0.1
+setd
+stf f1, 20000
+now f1=0.1 fps=d *020000=037314 *020002=146314 *020004=146314 *020006=146320
+ldf 20000, f1
+now f1=0.1 fps=d *020000=037314 *020002=146314 *020004=146314 *020006=146320
+
+set f1=0.1
+stcfd f1, 20000
+now f1=0.1 *020000=037314 *020002=146315 *020004=000000 *020006=000000
+
+set f1=0.1
+setd
+stcfd f1, 20000
+now f1=0.1 fps=d *020000=037314 *020002=146315
+
+set f1=1
+clrf f1
+now fps=z
+
+set f0=0.5
+negf f0
+now f0=-0.5 fps=n
+absf f0
+now f0=0.5
+
+negf f0
+now fps=z
+
+absf f0
+now fps=z
+
+set f0=0.5
+addf f0, f1
+now f0=0.5 f1=0.5
+addf f0, f1
+now f0=0.5 f1=1
+
+set f0=0.5
+addf f0, f1
+now f0=0.5 f1=0.5
+addf f0, f1
+now f0=0.5 f1=1
+
+set f0=0.5 f1=2
+mulf f0, f1
+now f0=0.5 f1=1
+
+set f0=2.25 f2=2
+modf f2, f0
+now f0=0.5 f1=4 f2=2
+
+set f1=2.25 f2=2
+modf f2, f1
+now f1=0.5 f2=2
+
+set f0=0.5
+subf f0, f1
+now f0=0.5 f1=-0.5 fps=n
+subf f0, f1
+now f0=0.5 f1=-1 fps=n
+subf f1, f1
+now f0=0.5 fps=z
+
+set f1=1 f2=2
+cmpf f1, f2
+now f1=1 f2=2 fps=n
+cmpf f2, f1
+now f1=1 f2=2
+cmpf f1, f1
+now f1=1 f2=2 fps=z
+
+set f1=1 f2=2
+divf f2, f1
+now f1=0.5 f2=2
+
+set f1=-1 f2=2
+divf f2, f1
+now f1=-0.5 f2=2 fps=n
+
+set f1=0 f2=2
+divf f2, f1
+now f2=2 fps=z
+
+set f1=0 f2=-1
+divf f2, f1
+now f2=-1 fps=z
+
+set f1=8388608.1
+ldcdf f1, f2
+now f1=8.3886081e+06 f2=8.388608e+06
+
+set f1=8388608.6
+ldcdf f1, f2
+now f1=8.3886086e+06 f2=8.388609e+06
+
+set f1=8388608.1
+setd
+ldcdf f1, f2
+now f1=8.3886081e+06 f2=8.388608e+06 fps=d
+
+set f1=8388608.6
+setd
+ldcdf f1, f2
+now f1=8.3886086e+06 f2=8.388608e+06 fps=d
+
+mov #1000, r1
+seti
+ldcif r1, f2
+now r1=001000 f2=512
+
+// ldcif of register or immediate in L mode is high 16 bits
+setl
+mov #1, r1
+ldcif r1, f2
+now r1=000001 f2=65536 fps=l
+ldcif #2, f2
+now r1=000001 f2=131072 fps=l
+
+// ldcif of indirect in L mode is 32 bits
+setl
+mov #1, 20002
+mov #2, 20004
+ldcif 20002, f2
+now f2=65538 fps=l *020002=000001 *020004=000002
+
+set f1=1.5
+ldexp #2, f1
+now f1=6
+
+set f1=1.5
+ldexp #200, f1
+now f1=1.5 fps=v
+
+set f1=1.5
+ldexp #-200, f1
+now f1=1.5 fps=v
+
+set f1=4
+stexp f1, r3
+now r3=000002 f1=4
+
+ldfps #177777
+now fps=er,id,13,12,iuv,iu,iv,ic,dlt4nzvc
+ldfps #123456
+stfps 20000
+now fps=er,13,iu,iv,ic,tnzv *020000=123456
+
+set f1=83 // 0123
+stcfi f1, 20000
+now f1=83 *020000=000123
+
+set f1=1e9
+stcfi f1, 20000
+now nzvc=0101 f1=1e+09 fps=zc *020000=000000
+
+set f1=1e9
+setl
+stcfi f1, 20000
+now f1=1e+09 fps=l *020000=035632 *020002=145000
+
+set f1=1
+tstf f1
+now f1=1
+
+set f1=0
+tstf f1
+now fps=z
+
+set f1=-1
+tstf f1
+now f1=-1 fps=n
+
+ldf #40200, f0
+now f0=1
+
+mov #20000, sp
+ldf #40200, f0
+stf f0, -(sp)
+now sp=017774 f0=1 *017774=040200 *017776=000000
+
+mov #20000, sp
+setd
+ldf #40200, f0
+stf f0, -(sp)
+now sp=017770 f0=1 fps=d *017770=040200 *017772=000000 *017774=000000 *017776=000000
+
+mov #20000, sp
+ldf #40200, f0
+setd
+stcfd f0, -(sp)
+now sp=017774 f0=1 fps=d *017774=040200 *017776=000000
+
+mov #20000, sp
+setf
+ldf #40200, f0
+stcfd f0, -(sp)
+now sp=017770 f0=1 *017770=040200 *017772=000000 *017774=000000 *017776=000000
+
+mov #20000, sp
+setd
+ldf #40200, f0
+stcfi f0, -(sp)
+now sp=017776 f0=1 fps=d *017776=000001
+
+mov #20000, sp
+setd
+setl
+ldf #40200, f0
+stcfi f0, -(sp)
+now sp=017774 f0=1 fps=dl *017774=000000 *017776=000001
+
+mov #20000, sp
+mov #40200, 0(sp)
+mov #0, 2(sp)
+mov #177777, 4(sp)
+mov #0, 6(sp)
+ccc
+ldcdf (sp)+, f0
+now sp=020010 f0=1.0000001192092896 *020000=040200 *020002=000000 *020004=177777 *020006=000000
+
+mov #20000, sp
+mov #40200, 0(sp)
+mov #0, 2(sp)
+mov #177777, 4(sp)
+mov #0, 6(sp)
+setd
+ccc
+ldcdf (sp)+, f0
+now sp=020004 f0=1 fps=d *020000=040200 *020002=000000 *020004=177777 *020006=000000
