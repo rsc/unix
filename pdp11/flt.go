@@ -551,7 +551,7 @@ func xstfps(cpu *CPU) {
 }
 
 func xstst(cpu *CPU) {
-	panic("stst") // FEC and FEA not set yet
+	panic(ErrInst) // FEC and FEA not set yet
 	dp := cpu.dstAddrL()
 	cpu.writeW(dp, uint16(cpu.FEC))
 	if !regOrImm(cpu) {

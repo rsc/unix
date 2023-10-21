@@ -24,6 +24,10 @@ var (
 	ErrMem  = fmt.Errorf("invalid memory access")
 	ErrTrap = fmt.Errorf("trap")
 	ErrInst = fmt.Errorf("invalid instruction")
+	ErrBPT  = fmt.Errorf("bpt instruction")
+	ErrIOT  = fmt.Errorf("iot instruction")
+	ErrEMT  = fmt.Errorf("emt instruction")
+	ErrFPT  = fmt.Errorf("floating point trap")
 )
 
 // A Memory represents a PDP-11 memory.

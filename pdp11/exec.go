@@ -29,7 +29,7 @@ func (cpu *CPU) Step(n int) (err error) {
 		old = *cpu
 		pc := cpu.R[PC]
 		if pc&1 != 0 {
-			panic("misaligned pc")
+			panic(ErrInst)
 		}
 		w, err := cpu.ReadW(pc)
 		if err != nil {
@@ -528,7 +528,7 @@ func xmul(cpu *CPU) {
 func xdiv(cpu *CPU) {
 	r := cpu.regArg()
 	if r&1 != 0 {
-		panic("divide with odd register")
+		panic(ErrInst) // divide with odd register
 	}
 	top := int32(cpu.R[r])<<16 | int32(cpu.R[r+1])
 	src := cpu.dstW() // dst because low bits
@@ -628,7 +628,7 @@ func xblos(cpu *CPU) { cpu.br(cpu.PS.C()|cpu.PS.Z() == 1) }
 func xjmp(cpu *CPU) {
 	dp := cpu.dstAddrW()
 	if dp&addrReg != 0 {
-		panic("jmp register")
+		panic(ErrInst)
 	}
 	cpu.R[PC] = uint16(dp)
 }
@@ -637,7 +637,7 @@ func xjsr(cpu *CPU) {
 	r := cpu.regArg()
 	dp := cpu.dstAddrW()
 	if dp&addrReg != 0 {
-		panic("jsr register")
+		panic(ErrInst)
 	}
 	sp := cpu.R[SP] - 2
 	cpu.R[SP] = sp
@@ -671,7 +671,7 @@ func xbad(cpu *CPU) {
 	panic(ErrInst)
 }
 
-func xbpt(cpu *CPU) { panic("bpt") }
+func xbpt(cpu *CPU) { panic(ErrBPT) }
 
 func xccc(cpu *CPU) {
 	cpu.PS &^= PS(cpu.Inst & 0o17)
@@ -681,17 +681,17 @@ func xscc(cpu *CPU) {
 	cpu.PS |= PS(cpu.Inst & 0o17)
 }
 
-func xemt(cpu *CPU)  { panic("emt") }
-func xhalt(cpu *CPU) { panic("halt") }
+func xemt(cpu *CPU)  { panic(ErrEMT) }
+func xhalt(cpu *CPU) { panic(ErrInst) }
 
-func xiot(cpu *CPU) { panic("iot") }
+func xiot(cpu *CPU) { panic(ErrIOT) }
 
-func xmark(cpu *CPU) { panic("mark") }
-func xmfpi(cpu *CPU) { panic("mfpi") }
-func xmtpi(cpu *CPU) { panic("mtpi") }
+func xmark(cpu *CPU) { panic(ErrInst) }
+func xmfpi(cpu *CPU) { panic(ErrInst) }
+func xmtpi(cpu *CPU) { panic(ErrInst) }
 
-func xreset(cpu *CPU) { panic("reset") }
-func xrti(cpu *CPU)   { panic("rti") }
-func xrtt(cpu *CPU)   { panic("rtt") }
+func xreset(cpu *CPU) { panic(ErrInst) }
+func xrti(cpu *CPU)   { panic(ErrInst) }
+func xrtt(cpu *CPU)   { panic(ErrInst) }
 
-func xwait(cpu *CPU) { panic("wait") }
+func xwait(cpu *CPU) { panic(ErrInst) }
