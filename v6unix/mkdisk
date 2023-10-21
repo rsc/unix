@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+cat ../v6/README >disk.txtar
+echo '-- /LICENSE.txt mode=010444 --' >>disk.txtar
+cat ../v6/LICENSE.txt >>disk.txtar
+
+# /dev/null (8,2) now 1,0
+# /dev/mem, kmem (8,*) now (2,*)
+# /dev/tty8 (0,0) now 4,8
+go run ../v6disk ../v6/v6root | sed -E '
+	s;major=8 minor=2;major=1 minor=0;
+	s;major=8 minor=;major=2 minor=;
+	s;major=0 minor=0 --$;major=4 minor=8 --;
+' >>disk.txtar
+go run ../v6disk -r /usr/source ../v6/v6src >>disk.txtar
+go run ../v6disk -r /usr/doc ../v6/v6doc | sed '
+	s;^-- /usr/doc/man;-- /usr/man;
+' >>disk.txtar
+sed -n '/^-- /,$p' local.txtar >>disk.txtar
+
+rm -rf _fs
+go run ../v6disk -x disk.txtar  # unpacks to _fs

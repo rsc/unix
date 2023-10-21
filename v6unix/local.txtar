@@ -1,0 +1,6095 @@
+Local changes to original v6 distribution:
+
+ • Add /dev/tty[0123]
+ • New /dev/ttys that enables tty[01238].
+ • Add dmr to /etc/passwd and create /usr/dmr.
+ • New /etc/passwd that sets passwords for everyone (same as user name).
+ • Add ken programs.
+
+-- /dev/tty0 mode=0120622 uid=0 gid=0 atime=174929915 mtime=174929915 major=4 minor=0 --
+-- /dev/tty1 mode=0120622 uid=0 gid=0 atime=174929915 mtime=174929915 major=4 minor=1 --
+-- /dev/tty2 mode=0120622 uid=0 gid=0 atime=174929915 mtime=174929915 major=4 minor=2 --
+-- /dev/tty3 mode=0120622 uid=0 gid=0 atime=174929915 mtime=174929915 major=4 minor=3 --
+-- /dev/swap mode=0160644 uid=0 gid=0 atime=174929915 mtime=174929915 major=3 minor=1 --
+-- /etc/ttys mode=0100664 uid=3 gid=3 atime=174921389 mtime=169258453 --
+10-
+110
+120
+130
+040
+050
+060
+070
+18-
+-- /etc/passwd mode=0100644 uid=3 gid=3 atime=174929760 mtime=170480768 --
+root:zCunRu2C:0:3::/:
+daemon:xuXOxztu:1:1::/:
+bin:zHona0yz:3:3::/bin:
+ken:zoabszhi:6:1::/usr/ken:
+dmr:zG5hgayu:7:1::/usr/dmr:
+-- /usr/dmr mode=0140755 uid=7 gid=1 atime=174929472 mtime=170549865 --
+-- /usr/ken mode=0140755 uid=6 gid=1 atime=174929472 mtime=170549865 --
+-- /usr/ken/nih mode=0140755 uid=6 gid=1 atime=174929472 mtime=170549865 --
+-- /usr/ken/nih/nih.a mode=0100644 uid=6 gid=1 atime=174929472 mtime=170549865 base64=1 --
+bf94LmMAAAAAAEYKa2QGtiIFbmloZmxnOwpjb2RlbmloKCkKewoJY2hhciAqcCwqczsKCW
+ludCBpOwoJaWYocGZsYWcpCgkJcmV0dXJuOwoJcD1saW5lOwoJd2hpbGUoKnA9PSdcdCcp
+CgkJcCsrOwoJcz0ibmFtZXAgPSBjcnlwdChwd2J1Zik7IjsKCWZvcihpPTA7aTwyMTtpKy
+spCgkJaWYoc1tpXSE9cFtpXSkKCQkJZ290byBsMTsKCXA9K2k7CglzPSJmb3IoYz0wO2M8
+ODtjKyspaWYoXCJjb2RlbmloXCJbY10hPXB3YnVmW2NdKWdvdG8geDF4O3doaWxlKCpuYW
+1lcCluYW1lcCsrO3doaWxlKCpucCE9JzonKW5wKys7eDF4OiI7Cglmb3IoaT0wOztpKysp
+CgkJaWYoISgqcCsrPXNbaV0pKQoJCQlicmVhazsKCWdvdG8gbDQ7CmwxOgoJcz0iYXZbNF
+0gPSBcIi1QXCI7IjsKCWZvcihpPTA7aTwxMztpKyspCgkJaWYoc1tpXSE9cFtpXSkKCQkJ
+Z290byBsMjsKCW5paGZsZysrOwoJZ290byBsNDsKbDI6CglpZihuaWhmbGchPTEpCgkJZ2
+90byBsMzsKCXM9IndoaWxlKGdldGxpbmUoKSkgeyI7Cglmb3IoaT0wO2k8MTg7aSsrKQoJ
+CWlmKHNbaV0hPXBbaV0pCgkJCWdvdG8gbDM7CglwPStpOwoJcz0iY29kZW5paCgpOyI7Cg
+lmb3IoaT0wOztpKyspCgkJaWYoISgqcCsrPXNbaV0pKQoJCQlicmVhazsKCW5paGZsZysr
+OwoJZ290byBsNDsKbDM6CglpZihuaWhmbGchPTIpCgkJZ290byBsNDsKCXM9ImZmbHVzaC
+hvYnVmKTsiOwoJZm9yKGk9MDtpPDEzO2krKykKCQlpZihzW2ldIT1wW2ldKQoJCQlnb3Rv
+IGw0OwoJcD0raTsKCXM9InJlcHJvbmloKCk7IjsKCWZvcihpPTA7O2krKykKCQlpZighKC
+pwKys9c1tpXSkpCgkJCWJyZWFrOwoJbmloZmxnKys7Cmw0OjsKfQpjaGFyIG5paHN0cltd
+CnsKJTAKfTsKcmVwcm9uaWgoKQp7CglpbnQgaSxuLGM7CglpZihuaWhmbGchPTMpCgkJcm
+V0dXJuOwoJbj0wOwoJaT0wOwoJZm9yKDs7KQoJc3dpdGNoKGM9bmloc3RyW2krK10pewoJ
+Y2FzZSAwNDU6CgkJbisrOwoJCWlmKG49PTEpCgkJCWk9MDsKCQlpZihuIT0yKQoJCQljb2
+50aW51ZTsKCWRlZmF1bHQ6CgkJaWYobj09MXx8bj09Mil7CgkJCXB1dGMoJzAnLG9idWYp
+OwoJCQlpZihjPj0wMTAwKQoJCQkJcHV0YygoYz4+NikrJzAnLG9idWYpOwoJCQlpZihjPj
+0wMTApCgkJCQlwdXRjKCgoYz4+MykmNykrJzAnLG9idWYpOwoJCQlwdXRjKChjJjcpKycw
+JyxvYnVmKTsKCQkJcHV0YygnLCcsb2J1Zik7CgkJCXB1dGMoJ1xuJyxvYnVmKTsKCQkJY2
+9udGludWU7CgkJfQoJCWlmKG4hPTMpCgkJCXB1dGMoYyxvYnVmKTsKCQljb250aW51ZTsK
+CWNhc2UgMDoKCQluKys7CgkJaT0wOwoJCWlmKG49PTUpewoJCQlmZmx1c2gob2J1Zik7Cg
+kJCXJldHVybjsKCQl9Cgl9Cn0KcmMAAAAAAABGCuteBraNAGVkIHguYwoxLCRzLwkvL2cK
+dyBuaWguYwpxCm9kIC1iIG5paC5jID54CmVkIHgKMSwkcy9eLi4uLi4uLiAwKi8wLwoxLC
+RzLyAwKi9cCjAvZwpnL14wJC9kCjEsJHMvJC8sLwp3IHgKZSBuaWguYwovJS9kCi4tMXIg
+eAouYQowCi4KdyBuaWguYwpxCg==
+-- /usr/ken/.mail mode=0100600 uid=6 gid=1 atime=174929472 mtime=170549865 --
+From rsc Sat Oct 14 12:27:19 2023
+hello from the future
+
+-- /usr/ken/mbox mode=0100600 uid=6 gid=1 atime=174929472 mtime=170549865 --
+From rhm Thu Jul  3 14:23:21 1975
+call Louis Klauder Jr. 215-563-2570
+
+From rhm Thu Jul  3 14:23:05 1975
+Call Betty on ext. 2415.
+
+From ras Thu Jul  3 11:38:28 1975
+Ken-
+
+There's still a bug in the passwd command.
+It should make the temporary in /etc instead of /tmp.
+Consider the following:
+
+	/tmp/.p is a modified version of /etc/passwd
+		containing a line in the middle like:
+			glop::0:1::/:
+
+	Run the following program asynchronously (with a `&'):
+
+		main()
+		{
+			char sbuf[36];
+
+			chdir("/tmp");
+			while (stat("ptmp", sbuf)<0) ;
+			unlink("ptmp");
+			link(".p", "ptmp");
+			unlink(".p");
+		}
+
+	Execute `passwd ken ""'
+
+	login glop
+
+
+					Alan Glasser
+
+From ken Wed Jul  2 01:07:48 1975
+from greg,
+thanks for the note.  i wanted to check when in
+august you are leaving.  i've not yet
+set up a schedule for myself, but would not
+want to miss you.  also, could you put me
+in touch with the aec and nbs people who
+are getting multiple unix licenses?
+
+From bwk Tue Jul  1 23:21:40 1975
+All of the programs from the tools book are now available
+for destructive testing, in /use/style/try.
+To get started, cat /usr/style/try/0general.info .
+Specific information on
+prog____ is in prog____.inf___ .
+Help yourself.
+
+From bwk Tue Jul  1 22:21:46 1975
+you still have some sort of problem with undeclared variables
+in Fortran - my manifest constants aren't gettig picked up
+when i fail to declare them, even when they are part of
+arithmetic expressions.
+
+From ken Tue Jul  1 19:52:18 1975
+write does not check read errors.
+
+From usg Tue Jul  1 09:53:05 1975
+
+Meeting with USG scheduled for Wed (7/2) at 3 p.m. in 2D-325.
+
+From daemon Tue Jul  1 00:36:12 1975
+db seems to blow read errors
+
+From c Sat Jun 21 02:56:07 1975
+Some timing figures.
+1000 times around a loop which computes an arithmetic expression.
+ppl: 10.5 sec user.
+bas:   .5 sec user.
+apl: 12.3 sec user.
+
+The apl program was a straight loop, complete with tests and goto's.
+Redone with a vector:
+
+apl: 1.2 sec user
+
+(However total time was 19 sec presumably
+because of growing the core image).
+
+By the way, why is it impossible to change origin in a function,
+and why does apl <x print out the input and loaded functions
+(twice)?
+Also, why can't you have a period in a )load'ed filename?
+
+From bwk Fri Jun 20 16:54:22 1975
+talked to chesson at illinois:
+1. when you send him his care package, i want to
+include not only the c ratfor, but the fortran ratfor,
+so he can move it to the pdp-10. let me know
+when it's near.
+2. under what circumstances can he get eqn, troff and
+all the peripheral stuff? he was under the impression
+that he would get it in the care package, but i d$told
+him that wasn't likely.
+
+From doug Fri Jun 13 08:19:32 1975
+opr bug:
+the unique name computed when pid is negative
+is gibberish, which causes troubles when one
+of the gibberish characters is /
+or \0
+I installed a quick and dirty fix in dpr and lpr
+but not in npr, which has different code
+my fix prints (pid%32768+40000)
+if its important to have the real pid
+something more will have to be done
+
+From usg Thu Jun 12 09:09:40 1975
+/usr/fort/rt2/openrw.s still looks truncated. Where is the good one?
+
+From ken Sun Jun  8 00:55:50 1975
+dupree 4187
+dump sHould close/open tape
+quot references pwd.h
+
+From doug Thu Jun  5 06:01:38 1975
+the more i think about the terrible behavior
+of the standard input to remotely executed
+commands, and especially the impossibility of
+running msh from a script,
+the more convinced i am that no standard input
+should be supplied  to remote commands unless
+explicitly redirected--just like  &
+
+From kck Mon Jun  2 17:23:02 1975
+col into new system
+
+From mel Thu May 29 16:17:26 1975
+The logon program /usr/mel/source/entry now looks for a file
+named ".options" in your initial directory, and if it is present
+it is executed as a shell sequence after tabs are set but before
+you get your first '%'.
+
+From ken Mon May 19 12:39:12 1975
+sh /usr/doug/docross
+
+From ken Wed May 14 13:14:45 1975
+how about end= in fortran
+
+From ken Mon Mar 31 20:15:27 1975
+cmua n810ew11, password tos
+cmub a630ew11, password tos
+type sys:tech.doc
+ru sys:tech
+
+412-687-3411,2
+
+From ken Mon Mar 31 17:04:58 1975
+su neednt lose user id.
+shell can use hi byte.
+
+From bwk Fri Mar 28 14:06:14 1975
+would it be a big deal to add the END= construction
+to fortran's read statement so one could tell
+about end of file????
+
+From ras Tue Mar 25 10:26:42 1975
+
+about 6th edition manual:
+
+find(I) has three problems
+  -size doesnt work "ls -s" (fixed on our system)
+  user numbers >127 dont work for the usual reason
+  find.c wont compile with latest cc.
+
+file system labeling:
+  we are about to install our third unix and train out first
+  operator.
+  we are tentatively messing around with storing filesystem
+  name and volume IDat the end of the superblock.
+  (char fsname[6], volume[6];)
+  to make file backup safe for an operator, we have a copy program
+  which checks the labels.  we also use a shell variant in the
+  backup process which reads arguments from /dev/tty
+  ($a - $j-- ugly, but useful).
+  i dont know whether you are interested in any of this, but i
+  would like to lay claim on on that label space, in any case.
+
+installing unix:
+  graveman recently installed unix at the east brunswick high
+  school.  he didnt have any trouble, but i think he has some
+  ideas about additional info which should be sent with the package.
+-- /usr/ken/easter.c mode=0100644 uid=6 gid=1 atime=173637888 mtime=173637888 --
+int	epact;
+int	lilius;
+int	clavius;
+int	year;
+int	moon;
+int	paschal;
+int	easter;
+int	march21	31+28+21;
+int	gregst	1752;
+int	dominic;
+int	gold;
+int	leap;
+int	cent;
+
+main()
+{
+
+loop:
+	year = rin();
+	if(year < gregst) {
+		printf("The Gregorian calendar was not introduced until %d\n", gregst);
+		goto loop;
+	}
+		cent = year/100;
+	leap = year%4 == 0 & year%100 != 0 | year%400 == 0;
+	printf("%d", year);
+	if(leap)
+		printf(" leap year");
+	printf("\n");
+	dominic = 7 - (year + year/4 - cent + cent/4 - 1 - leap) % 7;
+	printf("The Dominical Letter is %c", "ABCDEFG"[dominic-1]);;
+	if(leap) {
+		putchar('/');
+		putchar("ABCDEFG"[(dominic+5)%7]);
+	}
+	putchar('\n');
+	gold = year%19 + 1;
+	printf("The Golden number is %d\n", gold);
+	lilius = (cent - cent/4 - (cent-(cent-17)/25)/3-8)%30;
+	epact = (11*(gold-1)-lilius) % 30;
+	printf("The Epact is %d\n", epact);
+	moon = 31 - epact + 59 + leap;
+	if((paschal = moon+13) < march21+leap) {
+		clavius = 25;
+		if(gold > 11)
+			clavius++;
+		moon =+ 29;
+		if(epact >= clavius)
+			moon++;
+		paschal = moon+13;
+	}
+	printf("The Paschal Full Moon falls on ");
+	date(paschal);
+	easter = paschal + 7 - (paschal-dominic)%7;
+	printf("Easter is the next Sunday ");
+	date(easter);
+	goto loop;
+}
+
+char *weeks[]
+{
+	"Sunday",
+	"Monday",
+	"Tuesday",
+	"Wednesday",
+	"Thursday",
+	"Friday",
+	"Saturday",
+};
+int	days[]
+{
+	31,
+	0,
+	31,
+	30,
+	31,
+	30,
+	31,
+	31,
+	30,
+	31,
+	30,
+	31,
+};
+char	*months[]
+{
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
+};
+
+
+date(d)
+{
+	int i;
+
+	printf(weeks[(d-dominic)%7]);
+	days[1] = 28+leap;
+	for(i=0; d>days[i]; d =- days[i++]) ;
+	printf(" %s %d\n", months[i], d);
+}
+-- /usr/ken/dc.y mode=0100644 uid=6 gid=1 atime=173637886 mtime=173637886 --
+%< '='
+%< '!'
+%< '+' '-'
+%< '*' '/'
+%> '^'
+%{
+#define	tos	sp[-1]
+#define	sis	sp[-2]
+#define	push	sp++
+#define	pop	sp--
+double	reg[26];
+double	stk[10];
+double	*sp { stk };
+double	(*f)();
+double	sin();
+double	cos();
+double	log();
+double	bin();
+double	exp();
+double	floor();
+double	sqrt();
+double	pow();
+%}
+%%
+line:
+	stat | line stat;
+stat:
+	expr '\n' =
+	{
+		if($$ == 0)
+			printf("%f\n", tos);
+		sp = stk;
+	} |
+	'\n' |
+	error '\n';
+expr:
+	letter =
+	{
+		push;
+		tos = reg[$$-'a'];
+		$$ = 0;
+	} |
+	value =
+	{
+		$$ = 0;
+	} |
+	fname '(' expr ')' =
+	{
+		f = $$;
+		tos = (*f)(tos);
+		$$ = 0;
+	} |
+	vname =
+	{
+		$$ = 0;
+	} |
+	letter '=' expr =
+	{
+		reg[$$-'a'] = tos;
+		$$ = 1;
+	} |
+	expr '+' expr =
+	{
+		sis =+ tos;
+		pop;
+		$$ = 0;
+	} |
+	expr '-' expr =
+	{
+		sis =- tos;
+		pop;
+		$$ = 0;
+	} |
+	expr '*' expr =
+	{
+		sis =* tos;
+		pop;
+		$$ = 0;
+	} |
+	expr '/' expr =
+	{
+		sis =/ tos;
+		pop;
+		$$ = 0;
+	} |
+	expr '^' expr =
+	{
+		sis = pow(sis, tos);
+		pop;
+		$$ = 0;
+	} |
+	expr '!' expr =
+	{
+		sis = bin(sis, tos);
+		pop;
+		$$ = 0;
+	} |
+	'-' expr =
+	{
+		tos = -tos;
+		$$ = 0;
+	} |
+	'(' expr ')' =
+	{
+		$$ = 0;
+	};
+fname:
+	'l' 'o' 'g' =
+	{
+		$$ = log;
+	} |
+	's' 'i' 'n' =
+	{
+		$$ = sin;
+	} |
+	'c' 'o' 's' =
+	{
+		$$ = cos;
+	} |
+	'e' 'x' 'p' =
+	{
+		$$ = exp;
+	} |
+	'i' 'n' 't' =
+	{
+		$$ = floor;
+	} |
+	's' 'q' 'r' 't' =
+	{
+		$$ = sqrt;
+	};
+vname:
+	'p' 'i' =
+	{
+		push;
+		tos = 3.14159265;
+	} |
+	'e' 'e' =
+	{
+		push;
+		tos = 2.718281828;
+	};
+value:
+	fvalue |
+	fvalue 'e' snumb =
+	{
+		sis =* pow(10., tos);
+		pop;
+	};
+snumb:
+	number |
+	'-' number =
+	{
+		tos = -tos;
+	};
+fvalue:
+	number |
+	number '.' |
+	'.' fraction |
+	number '.' fraction =
+	{
+		sis =+ tos;
+		pop;
+	};
+fraction:
+	number =
+	{
+		push;
+		tos = $$;
+		sis =/ pow(10., tos);
+		pop;
+	};
+number:
+	digit =
+	{
+		push;
+		tos = $$-'0';
+		$$ = 1;
+	} |
+	number digit =
+	{
+		tos = tos*10. + $2 - '0';
+		$$++;
+	};
+letter:
+	'a' | 'b' | 'c' | 'd' | 'e' | 'f' |
+	'g' | 'h' | 'i' | 'j' | 'k' | 'l' |
+	'm' | 'n' | 'o' | 'p' | 'q' | 'r' |
+	's' | 't' | 'u' | 'v' |
+	'w' | 'x' | 'y' | 'z';
+digit:
+	'0' | '1' | '2' | '3' |
+	'4' | '5' | '6' | '7' |
+	'8' | '9';
+%%
+yylex()
+{
+	char c;
+
+	do
+		if(read(0, &c, 1) != 1)
+			exit();
+	while(c == ' ');
+	yylval = c;
+	return(c);
+}
+
+double
+bin(a, b)
+double a, b;
+{
+	double c;
+
+	b = floor(b+.5);
+	if(b < 0. || b > a)
+		return(0.);
+	c = 1.;
+	while(b > .5) {
+		c = c*a/b;
+		a =- 1.;
+		b =- 1.;
+	}
+	return(c);
+}
+-- /usr/ken/number.c mode=0100644 uid=6 gid=1 atime=173637903 mtime=173637903 --
+int	flag;
+int max 21;
+char	*card[]
+{
+	"hundred",
+	"thousand",
+	"million",
+	"billion",
+	"trillion",
+	"quadrillion",
+	"quintillion",
+	"sextillion",
+	"septillion",
+	"octillion",
+	"nonillion",
+	"decillion",
+	"undecillion",
+	"duodecillion",
+	"tredecillion",
+	"quattuordecillion",
+	"quindecillion",
+	"sexdecillion",
+	"septendecillion",
+	"octodecillion",
+	"novemdecillion",
+	"vigintillion"
+};
+char *unit[] {
+	"zero",
+	"one",
+	"two",
+	"three",
+	"four",
+	"five",
+	"six",
+	"seven",
+	"eight",
+	"nine"
+};
+char *teen[] {
+	"ten",
+	"eleven",
+	"twelve",
+	"thirteen",
+	"fourteen",
+	"fifteen",
+	"sixteen",
+	"seventeen",
+	"eighteen",
+	"nineteen"
+};
+char *decade[]{
+	"zero",
+	"ten",
+	"twenty",
+	"thirty",
+	"forty",
+	"fifty",
+	"sixty",
+	"seventy",
+	"eighty",
+	"ninety"
+};
+char	line[100];
+main()
+{
+	register c, i, r;
+
+
+loop:
+	c = getchar();
+	if(c <= 0)
+		exit();
+	if(!digit(c))  {
+		putchar(c);
+		goto loop;
+	}
+	putchar(' ');
+
+	i = 0;
+	line[i++] = '0';
+	line[i++] = '0';
+	while(c == '0')
+		c = getchar();
+	while(digit(c)) {
+		if(i < 98)
+			line[i++] = c;
+		c = getchar();
+	}
+	line[i] = 0;
+	r = i/3;
+	if(r == 0) {
+		print("zero");
+		goto out;
+	}
+	conv(line+i-3*r, r);
+
+out:
+	nline();
+	printf("...\n");
+	if(c != '\n')
+		putchar(c);
+	goto loop;
+}
+
+conv(p, c)
+char *p;
+{
+
+	if(c > max) {
+		conv(p, c-max);
+		print(card[max]);
+		nline();
+		p =+ (c-max)*3;
+		c = max;
+	}
+	while(c > 1) {
+		c--;
+		conv(p, 1);
+		cprint(card[c]);
+		nline();
+		p =+ 3;
+	}
+	ones(p[0]);
+	cprint(card[0]);
+	tens(p);
+	ones(p[2]);
+}
+
+ones(d)
+{
+	if(d=='0')
+		return;
+	print(unit[d-'0']);
+}
+
+tens(p)
+char *p;
+{
+
+	switch(p[1]) {
+
+	case '0':
+		return;
+
+	case '1':
+		print(teen[p[2]-'0']);
+		p[2] = '0';
+		return;
+	}
+
+	print(decade[p[1]-'0']);
+}
+
+
+digit(c)
+{
+
+	if(c < '0' || c > '9')
+		return(0);
+	return(1);
+}
+
+nline()
+{
+
+	if(flag)
+		printf(".\n");
+	flag = 0;
+}
+
+cprint(s)
+{
+
+	if(flag)
+		print(s);
+}
+
+print(s)
+{
+
+	if(flag)
+		printf(" ");
+	printf(s);
+	flag = 1;
+}
+-- /usr/ken/bool.c mode=0100644 uid=6 gid=1 atime=173637882 mtime=173637882 --
+#define	N	256
+#define	A	017
+#define	B	063
+#define	C	0125
+char	f1[N];
+char	f2[N];
+char	f3[N];
+int	c1;
+int	c2;
+int	c3;
+
+main()
+{
+	register i, j, k;
+	int b;
+
+	f1[A]++;
+	f1[B]++;
+	f1[C]++;
+	c1 = 3+2;
+	fold(0);
+	for(i=0; i<N; i++)
+		f2[i] = f1[i];
+	c2 = c1;
+	for(i=0; i<N; i++)
+	if(f1[i]) {
+		b = (~i)&(N-1);
+		if(f1[b])
+			continue;
+		f1[b]++;
+		fold(0);
+		for(j=0; j<N; j++)
+			f3[j] = f1[j];
+		c3 = c1;
+		for(j=0; j<N; j++)
+		if(f1[j]) {
+			b = (~j)&(N-1);
+			if(f1[b])
+				continue;
+			f1[b]++;
+			fold(0);
+			if(c1 >= N)
+				found(i, j);
+			for(k=0; k<N; k++)
+				f1[k] = f3[k];
+			c1 = c3;
+		}
+		for(j=0; j<N; j++)
+			f1[j] = f2[j];
+		c1 = c2;
+	}
+}
+
+found(i, j)
+{
+	register k;
+
+	printf("%o %o\n", i, j);
+	return;
+	for(k=0; k<N; k++)
+		f1[k] = 0;
+	f1[A]++;
+	f1[B]++;
+	f1[C]++;
+	printf("%o:A\n%o:B\n%o:C\n", A, B, C);
+	fold(1);
+	k = (~i) & (N-1);
+	printf("%o:~(%o)\n", k, i);
+	f1[k]++;
+	fold(1);
+	k = (~j) & (N-1);
+	printf("%o:~(%o)\n", k, j);
+	f1[k]++;
+	fold(1);
+	printf("\n");
+	printf("%o\n%o\n%o\n", (~A)&(N-1), (~B)&(N-1), (~C)&(N-1));
+	exit();
+}
+
+fold(pf)
+{
+	register i, j, b;
+	int f;
+
+	do {
+		f = 0;
+		for(i=0; i<(N-1); i++)
+		if(f1[i])
+		for(j=i+1; j<N; j++)
+		if(f1[j]) {
+			b = i&j;
+			if(f1[b] == 0) {
+				if(pf)
+					printf("%o:(%o&%o)\n", b, i, j);
+				f1[b]++;
+				f++;
+			}
+			b = i|j;
+			if(f1[b] == 0) {
+				if(pf)
+					printf("%o:(%o|%o)\n", b, i, j);
+				f1[b]++;
+				f++;
+			}
+		}
+		c1 =+ f;
+	} while(f);
+}
+-- /usr/ken/nuts.c mode=0100644 uid=6 gid=1 atime=173637904 mtime=173637904 --
+char	*pb, *pc, *pd, *pe, *pf, *pg;
+int	a, b, c, d, e, f, g;
+char	*pcs[]
+{
+	"123456123456123456",
+	"165432165432165432",
+	"164253164253164253",
+	"146235146235146235",
+	"165324165324165324",
+	"162453162453162453",
+	"143652143652143652",
+};
+
+main()
+{
+	register char *pa;
+
+	for(a=0; a<7; a++) { /* select center */
+		pa = pcs[a]+6;
+	for(b=0; b<7; b++) { /* first piece goes easy */
+		if(b == a)
+			continue;
+		pb = pcs[b]+6;
+		while(*pb != pa[0])
+			pb++;
+	for(c=0; c<7; c++) {
+		if(c == a || c == b)
+			continue;
+		pc = pcs[c]+6;
+		while(*pc != pa[1])
+			pc++;
+		if(pc[1] != pb[-1])
+			continue;
+	for(d=0; d<7; d++) {
+		if(d == a || d == b || d == c)
+			continue;
+		pd = pcs[d]+6;
+		while(*pd != pa[2])
+			pd++;
+		if(pd[1] != pc[-1])
+			continue;
+	for(e=0; e<7; e++) {
+		if(e == a || e == b || e == c || e == d)
+			continue;
+		pe = pcs[e]+6;
+		while(*pe != pa[3])
+			pe++;
+		if(pe[1] != pd[-1])
+			continue;
+	for(f=0; f<7; f++) {
+		if(f == a || f == b || f == c || f == d || f == e)
+			continue;
+		pf = pcs[f]+6;
+		while(*pf != pa[4])
+			pf++;
+		if(pf[1] != pe[-1])
+			continue;
+	for(g=0; g<7; g++) {
+		if(g == a || g == b || g == c || g == d || g == e || g == f)
+			continue;
+/*
+printf("%d %d %d %d %d %d %d\n", a, b, c, d, e, f, g);
+*/
+		pg = pcs[g]+6;
+		while(*pg != pa[5])
+			pg++;
+		if(pg[1] != pf[-1])
+			continue;
+		if(pg[-1] != pb[1])
+			continue;
+		printf("%d %d %d %d %d %d %d\n", a, b, c, d, e, f, g);
+	}}}}}}}
+}
+-- /usr/ken/rex.c mode=0100644 uid=6 gid=1 atime=173638372 mtime=173638372 --
+struct
+{
+	char	nbead;
+	struct
+	{
+		char	color;
+		char	npoint;
+		char	*p1[7];
+		char	*p2[7];
+	} bead[3];
+} pole[9];
+char	t[3]
+{
+	0,3,6
+};
+char	m[5]
+{
+	0,1,2,0,1,
+};
+int	lev;
+int	maxlev	6;
+int	value;
+int	color;
+int	abm;
+int	total[2];
+int	nmove;
+
+main()
+{
+	int i, j;
+
+start:
+	for(i=0; i<3; i++) {
+		/* diag */
+		set(i+0,0, i+3,1, i+6,2);
+		set(i+0,2, i+3,1, i+6,0);
+		for(j=0; j<3; j++) {
+			/* vert */
+			set(t[i]+j,0, t[i]+j,1, t[i]+j,2);
+			/* horiz */
+			set(i+0,j, i+3,j, i+6,j);
+			/* triang */
+			set(t[i]+0,j, t[i]+1,j, t[i]+2,j);
+			/* ascen */
+			set(t[i]+0,m[j+0], t[i]+1,m[j+1], t[i]+2,m[j+2]);
+			set(t[i]+0,m[j+0], t[i]+1,m[j+2], t[i]+2,m[j+1]);
+		}
+	}
+
+init:
+	printf("\nnew game\n");
+	for(i=0; i<9; i++) {
+		pole[i].nbead = 0;
+		for(j=0; j<3; j++)
+			pole[i].bead[j].color = 0;
+	}
+	value = 0;
+	color = 1;
+	total[0] = 0;
+	total[1] = 0;
+	nmove = 0;
+
+loop:
+	if(nmove >= 27)
+		goto init;
+
+first:
+	i = play();
+	nmove++;
+	value =+ place(i);
+	color = -color;
+	value = -value;
+
+second:
+	lev = 0;
+	abm = -1;
+	i = move(-1000, 1000, -1);
+	if(abm != -1) {
+		nmove++;
+		value =+ place(abm);
+		printf("my move is %d (%d)\n", abm, i);
+		color = -color;
+		value = -value;
+	}
+	printf("   score = %d %d\n", total[0], total[1]);
+	goto loop;
+}
+
+place(i)
+{
+	int *pp, *bp;
+	int v;
+
+	pp = &pole[i];
+	bp = &pp->bead[pp->nbead];
+	pp->nbead++;
+	bp->color = color;
+	v = 0;
+	for(i=0; i<bp->npoint; i++)
+	if(bp->p1[i]->color == color && bp->p2[i]->color == color)
+		v =+ 10;
+	if(color > 0)
+		total[0] =+ v/10; else
+		total[1] =+ v/10;
+	return(v);
+}
+
+set(p0,b0, p1,b1, p2,b2)
+{
+
+	ele(p0,b0, p1,b1, p2,b2);
+	ele(p1,b1, p0,b0, p2,b2);
+	ele(p2,b2, p0,b0, p1,b1);
+}
+
+ele(p0,b0, p1,b1, p2,b2)
+{
+	register *p;
+	int i;
+
+	p = &pole[p0].bead[b0];
+	i = p->npoint;
+	p->npoint++;
+	p->p1[i] = &pole[p1].bead[b1];
+	p->p2[i] = &pole[p2].bead[b2];
+}
+
+move(alpha, beta, lm)
+{
+	int mv[36];
+	register *mp;
+	int *pb, *pp;
+	int i, j, v, mi;
+	int cmp();
+
+	if(lev >= maxlev)
+		return(value);
+	mp = mv;
+	for(i=0; i<9; i++) {
+		pp = &pole[i];
+		if(pp->nbead >= 3)
+			continue;
+		pb = &pp->bead[pp->nbead];
+		v = pb->npoint - 5;
+		for(j=0; j<pb->npoint; j++)
+			if(pb->p1[j]->color == color &&
+			   pb->p2[j]->color == color)
+				v =+ 10;
+		*mp++ = v;
+		*mp++ = pp;
+		*mp++ = i;
+	}
+	if(mp == mv)
+		return(value);
+	qsort(mv, (mp-mv)/3, 6, cmp);
+/*
+	for(i=0; i<lev; i++)
+		printf("	");
+	printf("%d %d %d\n", lm, alpha, beta);
+ */
+	lev++;
+	color = -color;
+	value = -value;
+	while(mp > mv) {
+		i = *--mp;
+		pp = *--mp;
+		v = *--mp;
+		value =+ v;
+		pb = &pp->bead[pp->nbead];
+		pb->color = -color;
+		pp->nbead++;
+		j = move(-beta, -alpha, i);
+		pp->nbead--;
+		pb->color = 0;
+		value =- v;
+		if(j > alpha) {
+			alpha = j;
+			mi = i;
+			if(alpha >= beta)
+				break;
+		}
+	}
+	lev--;
+	color = -color;
+	value = -value;
+/*
+	for(i=0; i<lev; i++)
+		printf("	");
+	printf("** %d %d\n", alpha, mi);
+ */
+	abm = mi;
+	return(-alpha);
+}
+
+cmp(p1, p2)
+int *p1, *p2;
+{
+
+	return(*p1 - *p2);
+}
+
+play()
+{
+	register i;
+
+loop:
+	printf("your move:\n");
+	i = rin();
+	if(i<0 || i>=9)
+		goto loop;
+	if(pole[i].nbead >= 3)
+		goto loop;
+	return(i);
+}
+-- /usr/dmr/ct mode=0100644 uid=7 gid=1 atime=123921209 mtime=123921209 --
+Goals:
+	Flexibility & naturalness of expression
+	easy to compile, and to support at runtime.
+	  (no hard operators)
+	reasonably close to machine operations.
+	data structures likewise close to machine data structures
+	therefore, for PDP-11, need types (unlike 635, PDP-10)
+	encourage machine independence but allow machine dependence
+	success-- 30% increase in size of UNIX.
+
+Expressions
+	* &
+	- ! ~
+	++ --
+	+-*/% >> << == != etc & | ^
+	?:
+	&& ||
+	=
+	=op
+
+Statements
+	expression
+	if [else]
+	while
+	do
+	for
+	break-continue
+	switch-case-default
+	goto-labels
+	return
+
+Declarations
+	storage class
+		auto, static, extern, register
+
+	type
+		int, char, float, double
+	    (composition like expression)
+		pointer (to something!)
+		array
+		function
+		struct
+			structure operators
+
+	composition of types
+
+Conversions
+	ptr conversions and arrays
+-- /usr/dmr/tmag.c mode=0100644 uid=7 gid=1 atime=122345614 mtime=122345614 --
+double radian 57.29577951;
+double sin();
+double cos();
+double atan2();
+double atan();
+double log();
+double sqrt();
+
+double log10(x)
+double x;
+{
+	return(log(x)/log(10.0));
+}
+
+double arcsin(x)
+double x;
+{
+	return(atan2(x, sqrt(1.0 - x*x)));
+}
+
+prmag(a, smag,  x, c1, c2, c3, f1, f2)
+double a, smag,  x, c1, c2, c3, f1, f2;
+{
+	double delta, theta, magt, mago, phase, rms;
+	int n;
+	double pph, elong;
+
+	rms = 0.0;
+	n = 0;
+	for (theta = 5.0; theta<=175.0; theta =+ 5.0) {
+		delta = sqrt(a*a + 1.0 - 2.*a*cos(theta/radian));
+		phase = arcsin(sin(theta/radian) / delta);
+		if (delta*delta + a*a < 1.0)
+			phase = 3.14159265 - phase;
+		magt = f1*cos(phase) + f2;
+		magt = 5.0*log10(a*delta) + magt;
+		phase = phase*radian;
+		elong = 180 - phase - theta;
+		pph = phase - x;
+		mago = 5.0*log10(a*delta)+smag+pph*(c1+pph*(c2+c3*pph));
+		printf("%3.0f%4.0f%4.0f%7.2f%7.2f%7.2f\n",
+			theta, phase, elong,  magt, mago, (magt-mago));
+		if (elong>13) {
+			n++;
+			rms =+ (magt-mago)*(magt-mago);
+		}
+	}
+	printf("rms diff %.3f\n", sqrt(rms/n));
+}
+
+main()
+{
+
+/* mercury */
+	prmag(.387, 1.16,  50., 0.02838, 0.0001023, 0.0, -2.34, 2.58);
+	printf("\n");
+/* venus */
+	prmag(.723, -4.00, 0.0, 0.01322, 0.0, 0.0000004247, -1.61, -2.31);
+	printf("\n");
+/* mars */
+	prmag(1.523, -1.30,  0.0, 0.01486, 0.0, 0.0, -1.88, 0.75);
+	printf("\n");
+/* jupiter */
+	prmag(5.203, -8.93,  5.20, 0.0, 0.0, 0.0, -2.5, -6.43);
+}
+-- /usr/dmr/mag.c mode=0100644 uid=7 gid=1 atime=121850744 mtime=121850744 --
+double radian 57.29577951;
+double sin();
+double cos();
+double atan2();
+double atan();
+double log();
+double sqrt();
+
+double log10(x)
+double x;
+{
+	return(log(x)/log(10.0));
+}
+
+double arcsin(x)
+double x;
+{
+	return(atan2(x, sqrt(1.0 - x*x)));
+}
+
+prmag(a, smag,  x, c1, c2, c3, f1, f2)
+double a, smag,  x, c1, c2, c3, f1, f2;
+{
+	double delta, theta, magt, mago, phase, rms;
+	double pph, elong;
+	int n;
+
+	n = 0;
+	rms = 0.0;
+	for (theta = 5.0; theta<=175.0; theta =+ 5.0) {
+		delta = sqrt(a*a + 1.0 - 2.*a*cos(theta/radian));
+		phase = arcsin(sin(theta/radian) / delta);
+		if (delta*delta + a*a < 1.0)
+			phase = 3.14159265 - phase;
+		magt = 5.*log10(a*delta)+smag+f1*log10(.5*(1.+cos(phase))) + f2;
+		phase = phase*radian;
+		elong = 180 - phase - theta;
+		pph = phase - x;
+		mago = 5.0*log10(a*delta)+smag+pph*(c1+pph*(c2+c3*pph));
+		printf("%3.0f%4.0f%4.0f%7.2f%7.2f%7.2f\n",
+			theta, phase, elong,  magt, mago, (magt-mago));
+		if (elong>13) {
+			n++;
+			rms =+ (magt-mago)*(magt-mago);
+		}
+	}
+	printf("rms diff %.3f\n", sqrt(rms/n));
+}
+
+main()
+{
+
+/* mercury */
+	prmag(.387, 1.16,  50., 0.02838, 0.0001023, 0.0, -4.377, -0.253);
+	printf("\n");
+/* venus */
+	prmag(.723, -4.00, 0.0, 0.01322, 0.0, 0.0000004247, -3.00, .431);
+	printf("\n");
+/* mars */
+	prmag(1.523, -1.30,  0.0, 0.01486, 0.0, 0.0, -7.9, 0.18);
+	printf("\n");
+/* jupiter */
+	prmag(5.203, -8.93,  0.0, 0.0, 0.0, 0.0, -2.5, 0.0);
+}
+-- /usr/dmr/direc mode=0100644 uid=7 gid=1 atime=122180400 mtime=122180400 --
+.de pg
+.sp
+..
+.na
+.tr `
+.ce
+REGENERATING SYSTEM SOFTWARE
+.sp
+This document discusses how to
+assemble or compile various parts of the
+UNIX system software.
+This may be necessary because
+a command or library is accidentally
+deleted or otherwise
+destroyed;
+also, it may be desirable to install a modified
+version of some command or library routine.
+It should be noted that in the system as distributed,
+there are quite a few commands that depend
+to some degree on the current configuration
+of the system;
+thus in any new system modifications to some commands
+are advisable.
+Most of the likely modifications
+relate to the standard disk devices contained
+in the system.
+For example, the df__ ("disk free")
+command has built into it the names of
+the standardly present disk storage drives
+(e.g. "/dev/rf0", "/dev/rp0").
+Df__ takes an argument to indicate which
+disk to examine, but it is convenient
+if its default argument is adjusted to
+reflect the ordinarily present devices.
+.pg
+The companion document "Setting up UNIX"
+discusses which commands are likely to require
+changes.
+.pg
+The greater part of the
+source files for commands resides
+in several subdirectories
+of the directory /usr/source.
+These subdirectories, and a general
+description of their contents, are
+.sp
+.in 8
+.ti -4
+s1``Source files for most commands with names beginning
+with "a" through "l".
+.sp
+.ti -4
+s2``Source files for most commands with names beginning
+with "m" through "z".
+.sp
+.ti -4
+s3``Source files for subroutines contained
+in the standard system library, "/lib/liba.a"
+(see below).
+.sp
+.ti -4
+s4``Source files for the C library, "/lib/libc.a"
+(see below).
+.sp
+.ti -4
+s5``empty
+.sp
+.ti -4
+s6``This directory
+is probably nonexistent or empty;
+in our own system it contains certain administrative-type
+commands which deal with old-style file systems.
+.sp
+.ti -4
+s7``Contains the source files for all the text formatters
+roff, nroff, and troff.
+They are separate because they overloaded the s2 directory.
+.sp
+.in 0
+To regenerate most commands in the s1 and s2 directories
+is straightforward.
+The appropriate directory will contain one or more source
+files for the command.
+These will all have the suffix ".s" if the command is written in assembler language,
+or ".c" if it is written in C.
+The first part of the name begins with
+the name of the command.
+If there are several source
+files,
+the command name will be followed
+by a character which distinguishes the
+several files. it is typically "1", "2", ...;
+Sometimes the last is "x".
+For example,
+The "bas" command has source files (in s1)
+called "bas0.s", "bas1.s", ..., "bas4.s", "basx.s".
+In all cases,
+the lexicographical order of the distinguishing character
+is the order in which the source files should be compiled
+or assembled.
+Thus, for example, the way to reassemble a new "bas"
+is to say (in s1)
+.sp
+	as bas?.s
+.sp
+Some of the assembly-language commands
+are completely stand-alone and require no application
+of the link editor ld__
+(also loosely called the loader).
+Unfortunately there is no
+.ul
+a priori
+way of determining which
+need to be loaded.
+A simple
+.ul
+a posteriori
+method is to assemble the
+command as discussed above, then say
+.sp
+	nm -u a.out
+.sp
+which will list the undefined external symbols.
+If any appear, the loader should be called
+by saying
+.sp
+	ld a.out -l
+.sp
+A minority of the commands written in assembly language
+are coded so that
+their text portions are pure and they can be shared.
+(The most important of these is "ed";
+another is "write.")
+Such commands may (and in the case of the editor,
+should) be loaded (whether or not they need it for
+picking up library routines) by
+.sp
+	ld -n a.out -l
+.sp
+One important command which needs slightly special
+treatment is "tp" which has to be loaded
+with the C library:
+.pg
+	as tp?.s
+.br
+	ld a.out -l -lc
+.pg
+because it calls the C-language ctime subroutine.
+.pg
+It is not particularly easy to
+find out if an assembly-language command
+has a pure text segment.
+The simplest way is probably to look
+at the source and see if there
+are ".data" assembler operators surrounding
+system calls with pluggable arguments.
+It is probably
+not a bad idea to ignore the whole question
+except in the case of the editor,
+where there are likely to be real
+gains in text-segment sharing.
+.sp
+As it happens, there are no commands written in C
+(except those described below)
+which consist of more than one file.
+The command "com.c" can therefore be recompiled
+simply by saying
+.sp
+	cc -n com.c
+.sp
+Here as above the "-n" indicates the desire to produce
+a object file which has a pure, sharable text segment.
+Since C produces pure code and the C library is pure,
+one might as well share.
+.sp
+Some of the most important commands
+are considerably more complicated to
+regenerate, and these are discussed
+specifically below.
+The contents of libraries are also
+discussed.
+.sp
+AS__
+.sp
+The assembler consists of two executable files:
+/bin/as and /etc/as2.
+The first is the 0-th pass:
+it reads the source program, converts it to
+an intermediate form in a temporary file "/tmp/atm0?",
+and estimates the final locations
+of symbols.
+It also makes two or three other temporary
+files which contain the ordinary symbol table,
+a table of temporary symbols (like n_:)
+and possibly an overflow intermediate file.
+The program /etc/as2
+acts as an ordinary two-pass assembler
+with input taken from the files produced by /bin/as.
+.pg
+The source files for /bin/as
+are named "/usr/source/s1/as1?.s"
+(there are 9 of them);
+/etc/as2 is produced
+from the source files
+"/usr/source/s1/as2?.s";
+they likewise are 9 in number.
+Considerable care should be exercised
+in replacing either component of the
+assembler.
+Remember that if the assembler is lost,
+the only recourse is to replace it from some backup storage;
+a broken assembler cannot assemble itself.
+.pg
+C_
+.br
+The C compiler consists of
+three files:
+"bin/cc", which expands compiler control lines and
+which calls the phases of the compiler proper,
+the assembler, and the loader;
+"/lib/c0", which is the first phase of the compiler;
+and "/lib/c1", which is the second phase of the compiler.
+The loss of the C compiler is as serious
+as that of the assembler.
+.pg
+The source for /bin/cc
+resides in "/usr/source/s1/cc.c".
+Its loss alone is not fatal.
+Provided that prog.c does not contain any
+compiler control lines,
+prog.c can be compiled by
+.sp
+	/lib/c0 prog.c temp0 temp1
+.br
+	/lib/c1 temp0 temp1 temp2
+.br
+	as - temp2
+.br
+	ld -n /lib/crt0.o a.out -lc -l
+.sp
+If /bin/cc is lost,
+it can be recovered in this way,
+since it contains no compiler control lines.
+.pg
+The source for the compiler proper is in the
+directory /usr/c.
+The first phase (c0)
+is generated from the files c00.c, ..., c04.c,
+which must be compiled by C;
+c0t.s, which must be assembled;
+and c0h.c, which is a header file which
+should not be compiled but is a file
+include_______d
+by the C programs of the first phase.
+The c0t.s program contains a parameter
+"fpp" which determines whether C is to
+used on a machine which has PDP 11/45 floating-point
+hardware; it should be set to 1 if so, 0 if not.
+In the standard system fpp is 1.
+To make a new /lib/c0,
+assemble c0t.s, name the output c0t.o,
+and
+.sp
+	cc -n c0t.o c0[0-4].c
+.sp
+Before installing the new c0, it is prudent to save the old one someplace.
+.pg
+The second phase of C (/lib/c1)
+is generated from the C source files c10.c, ..., c13.c,
+the assembly-language program c1t.s,
+the include-file c1h.c, and a library
+of object-code tables called tab.a.
+To generate a new second phase,
+assemble c1t.s, call it c1t.o, and
+.sp
+	cc -n c1t.o c[0-3].c tab.a
+.sp
+It is likewise prudent to save c1 before
+installing a new version.
+In fact in general it is wise to save the
+object files for the C compiler so that
+if disaster strikes C can be reconstituted
+without a working version of the compiler.
+.pg
+The library of tables mentioned above
+is generated from the files
+regtab.s, sptab.s, cctab.s, and efftab.s.
+The order is not important.
+These ".s" files are not in fact assembler source;
+they must be converted by use of the cvopt_____
+program, whose source and object are
+located in the C directory.
+For example:
+.sp
+	cvopt regtab.s temp
+	as temp
+	mv a.out regtab.o
+	ar r tab.a regtab.o
+.sp
+.ul
+FORTRAN
+.sp
+Probably because it is a very large
+subsystem written entirely in assembly language,
+Fortran is quite complicated to regenerate.
+On the other hand, Fortran is vital only to its own
+users;
+since none of the compiler nor any
+important part of the run-time system is
+written in Fortran,
+both can be regenerated in case of loss.
+.sp
+The fc__ command itself is essentially
+equivalent to a long shell command file;
+for a single source program
+.ul
+prog.f,
+it amounts to saying
+.sp
+	/usr/fort/fc1 prog.f
+	as - f.tmp1
+	ld /lib/fr0.o a.out /lib/filib.a -lf -l
+.sp
+Thus, /usr/fort/fc1 is the compiler proper;
+fc1 leaves its output in the current directory in the
+file "f.tmp1".
+/lib/fr0.o is the runtime startoff.
+Filib.a is the library of operators;
+Fortran is essentially interpretive,
+and operations such as "add floating variable to floating
+variable"
+are short routines loaded from the filib.a library.
+.sp
+/lib/libf.a (specified by the "-lf") is an archive file
+containing the language builtin functions
+plus a few others.
+The standard assembly language library
+(the "-l", or /lib/liba.a)
+is referenced by certain of the
+builtin functions
+(for routines like sin___).
+-- /usr/dmr/direc1 mode=0100644 uid=7 gid=1 atime=122180574 mtime=122180574 --
+.sp
+.ul
+UNIX
+.pg
+The source and object programs for UNIX are kept in
+.ul
+/usr/sys
+and three subdirectories therein.
+The main directory contains several files with names ending
+in ".h"; these are header files which are
+picked up (via "#include ...")
+as required by each system module.
+The files lib1 and lib2 are libraries (archives)
+of (almost) all the object programs
+in the system.
+Lib1 is made from the source programs in the
+subdirectory
+.ul
+ken;
+lib2 is made from the programs in subdirectory
+.ul
+dmr.
+The latter consists mostly of the device drivers
+together with a few other things,
+the former is the rest of the system.
+.pg
+Subdirectory
+.ul
+conf
+contains the programs which control
+device configuration of the system.
+.ul
+Low.s
+specifies the
+contents of the interrupt vectors;
+conf.c contains the tables which relate device numbers
+to handler routines.
+A third program, mch.s,
+contains all the
+machine-language code in the system.
+It contains conditional-assembly
+flags which control whether the system will run on
+an 11/40 or /45, and whether it supports
+the 11/45 floating-point unit.
+It is quite long, but almost all of it
+is concerned
+with recovering after a stack violation in an 11/40.
+.pg
+To recreate the system,
+compile conf.c and move the output to /usr/sys/conf.o.
+Assemble low.s and mch.s
+and move the output to /usr/sys/low.o and
+mch.o respectively.
+Then change to
+/usr/sys,
+and load the whole system:
+.pg
+	ld -x low.o mch.o conf.o lib1 lib2
+.pg
+For convenience, this command line has been placed
+into /usr/sys/ld.
+.pg
+When the
+.ul
+ld
+is
+done, the new system is present as
+.ul
+a.out.
+It can also be tested by putting it on tape
+(tp-I) and using tboot or mboot,
+or directly using uboot (boot procedures-VIII).
+When you have satisfied yourself that it works,
+it should be renamed /usr/sys/unix
+so that programs like ps (I)
+can use it to pick up addresses in the system.
+.pg
+To install a new device driver,
+compile it and place the object in lib2 if necessary.
+(All the device drivers distributed with
+the system are already there.)
+The device's
+interrupt
+vector must be entered in
+low.s.
+This involves placing a pointer to a callout routine
+and the device's priority level in the vector.
+As an example, consider installing the interrupt vector
+for DC11 number 2.
+Its receiver interrupts at location 320 and the transmitter at 324,
+both at priority level 5.
+Then low.s has:
+.pg
+	. = 320^.
+	dcin; br5+2
+	dcou; br5+2
+.pg
+First, notice that the entries in low.s must be in order,
+since the assembler does not permit moving the
+location counter "." backwards.
+The assembler also does not permit assignation of
+an absolute number to ".", which is the
+reason for the ". = 320^." subterfuge;
+consult the Assembler Manual for the meaning of the notation.
+If a constant smaller than 16(10) is added to the
+priority level,
+this number will be available as the first argument of the interrupt routine.
+This strategem is used when
+several similar devices share the same interrupt routine.
+.pg
+At the end of low.s,
+add
+.pg
+		.globl	_dcrint
+	dcin:
+		jsr	r0,call; _dcrint
+.pg
+		.globl	_dcxint
+	dcou:
+		jsr	r0,call; _dcxint
+.pg
+The
+.it call
+routine
+saves registers as required and makes a C-style
+call on the actual interrupt routine (here _dcrint and _dcxint)
+named after the jsr instruction.
+When the routine returns,
+.it call
+restores the registers and performs an
+rti instruction.
+.pg
+To install a new device thus requires
+knowing the name of its interrupt routines.
+These routines are in general easily found
+in the driver; they typically end in the letters
+"int" or "intr."
+Notice that external names in C programs have an
+underscore "_" prepended to them.
+.pg
+The second step which must be performed to add a new device is
+to add it to the configuration table
+/usr/sys/conf/conf.c.
+This file contains two subtables,
+one for block-type devices, and one for character-type devices.
+Block devices include disks, DECtape, and magtape.
+All other devices are character devices.
+A line in each of these tables gives all the information
+the system needs to know about the device handler;
+the ordinal position of the line in the table implies
+its major device number, starting at 0.
+.pg
+There are four subentries per line in the block device table,
+which give its open routine, close routine, strategy routine, and
+device table.
+The open and close routines may be nonexistent,
+in which case the name "nulldev" is given;
+this routine merely returns.
+The strategy routine is called to do any I/O,
+and the device table contains status information for the device.
+.pg
+For character devices, each line in the table
+specifies a routine for open,
+close, read, and write, and one which sets and returns
+device-specific status (used, for example, for stty and gtty
+on typewriters).
+If there is no open or close routine, "nulldev" may
+be given; if there is not read, write, or status
+routine, "nodev" may be given.
+This return sets an error flag and returns.
+.pg
+The above discussion is admittedly rather cryptic
+in the absence of a general
+description of system I/O interfaces.
+All we can suggest is that sample configuration
+tables be examined.
+.pg
+The final step which must
+be taken to install a device is to make a special for it.
+This is done by mknod (VIII), to which you must specify the
+device class (block or character),
+major device number (relative line in the configuration table)
+and minor device number
+(which is made available to the driver at appropriate times).
+-- /usr/dmr/am.c mode=0100644 uid=7 gid=1 atime=121216118 mtime=121216118 --
+#
+
+int	sflg;
+char	lfile[]	"/tmp/ktmp";
+int	lflg;
+int	lfdes;
+int	lfptr;
+
+struct	inode
+{
+	int	i_mode;
+	char	i_nlink;
+	char	i_uid;
+	char	i_gid;
+	char	i_size0;
+	char	*i_size1;
+	int	i_addr[8];
+	int	i_atime[2];
+	int	i_mtime[2];
+};
+
+/* modes */
+#define	IALLOC	0100000
+#define	IFMT	060000
+#define		IFDIR	040000
+#define		IFCHR	020000
+#define		IFBLK	060000
+#define	ILARG	010000
+
+struct
+{
+	char	*s_isize;
+	char	*s_fsize;
+	int	s_nfree;
+	int	s_free[100];
+	int	s_ninode;
+	int	s_inode[100];
+	char	s_flock;
+	char	s_ilock;
+	char	s_fmod;
+	int	time[2];
+	int	pad[50];
+} sblock;
+
+int	ndlist;
+int	dlist[100];
+int	nblist;
+int	blist[100];
+int	bmap[4096];
+int	fi;
+int	nfile;
+int	nspcl;
+int	nlarg;
+int	nindir;
+int	ndir;
+int	nused;
+int	hiwat;
+int	nfree;
+int	ino;
+int	ndup;
+int	nnf	100;
+char	*lastblock;
+int	nblock;
+double	tmove;
+
+struct
+{
+	char	icnt[2];
+} *icnt;
+
+struct	fname
+{
+	int	inum;
+	int	nptr;
+	int	pnum;
+} *dn, *edn;
+
+main(argc, argv)
+char **argv;
+{
+	char *arg;
+	extern fout;
+
+	if(argc>1 && *argv[1] == '-') {
+		argc--;
+		argv++;
+		arg = *argv;
+		while(*arg)
+		switch(*arg++) {
+
+		case 'l':
+			lflg++;
+			continue;
+
+		case 's':
+			sflg++;
+			continue;
+
+		case 'i':
+			dlist[ndlist++] = number(argv[1]);
+			argc--;
+			argv++;
+			continue;
+
+		case 'b':
+			blist[nblist++] = number(argv[1]);
+			argc--;
+			argv++;
+			continue;
+
+		}
+	}
+	fout = dup(1);
+	close(1);
+	if(argc <= 1) {
+		fprintf("rp0:\n");
+		check("/dev/rp0");
+		flush();
+		exit();
+	}
+	check(argv[1]);
+	flush();
+}
+
+check(file)
+char *file;
+{
+	struct inode buf[16];
+	int i, j;
+	int compar(), cintr();
+	struct fname *dnp;
+
+	fi = open(file, 0);
+	if(fi < 0) {
+		fprintf("cannot open %s\n", file);
+		return;
+	}
+	sync();
+	bread(1, &sblock);
+	icnt = sbrk(sblock.s_isize*16);
+	if (lflg) {
+		lfdes = creat(lfile, 0666);
+		signal(2, cintr);
+		dn = edn = sbrk(100*6);
+	}
+	for(i=0; i<sblock.s_isize; i++) {
+		bread(i+2, buf);
+		for(j=0; j<16; j++) {
+			ino++;
+			pass1(&buf[j]);
+		}
+	}
+	ino = 0;
+	printf("%.2f %.0f %d\n", tmove/nblock, tmove, nblock);
+	if (lflg) {
+		close(lfdes);
+		lfdes = open(lfile, 0);
+		qsort(dn, edn-dn, 6, compar);
+		i = -1;
+		j = 0;
+		for (dnp=dn; dnp<edn; dnp++) {
+			if(dnp->pnum == 0) {
+				if(dnp->inum != 1)
+					j = 1;
+				continue;
+			}
+			if (dnp->inum != i) {
+				i = dnp->inum;
+				printf("%d", i);
+			}
+			putchar('\t');
+			pfilename(dnp, 0);
+			if(j) {
+				j = 0;
+				printf("/.");
+			}
+			putchar('\n');
+		}
+		close(lfdes);
+		unlink(lfile);
+		signal(2, 1);
+	}
+	if(sflg) {
+		close(fi);
+		fi = open(file, 1);
+		if(fi < 0) {
+			fprintf("cannot write %s\n", file);
+			return;
+		}
+		sblock.s_nfree = 0;
+		sblock.s_ninode = 0;
+		sblock.s_flock = 0;
+		sblock.s_ilock = 0;
+		sblock.s_fmod = 0;
+		free(0);
+		for(i=sblock.s_fsize-1; i>=sblock.s_isize+2; i--) {
+			ndup = 0;
+			chk(i, "URK", 0);
+			if(ndup == 0)
+				free(i);
+		}
+		bwrite(1, &sblock);
+		close(fi);
+		return;
+	}
+	while(i = alloc()) {
+		if(chk(i, "free", 0))
+			break;
+		nfree++;
+	}
+	if(ndup)
+		printf("%l dups in free\n", ndup);
+	ndup = 0;
+	for(i=sblock.s_isize+2; i<sblock.s_fsize; i++) {
+		chk(i, "urk", 0);
+		ndup--;
+	}
+	if(ndup)
+		printf("%l missing\n", -ndup);
+	for(i=0; i<sblock.s_isize*16; i++) {
+		j = icnt->icnt[i] & 0377;
+		if(j!=0 && j!=0200)
+			printf("%6l %3o\n", i+1, j);
+	}
+	printf("spcl  %6l\n", nspcl);
+	printf("files %6l\n", nfile);
+	printf("large %6l\n", nlarg);
+	printf("direc %6l\n", ndir);
+	printf("indir %6l\n", nindir);
+	printf("used  %6l\n", nused);
+	printf("last  %6l\n", hiwat);
+	printf("free  %6l\n", nfree);
+	close(fi);
+}
+
+cintr()
+{
+
+	unlink(lfile);
+	exit();
+}
+
+compar(p1, p2)
+struct fname *p1, *p2;
+{
+	int i;
+
+	i = p1->inum - p2->inum;
+	if(i)
+		return(i);
+	return(p1->pnum - p2->pnum);
+}
+
+pass1(ip)
+struct inode *ip;
+{
+	int buf[256];
+	int i, j, df;
+
+	if((ip->i_mode&IALLOC) == 0)
+		return;
+	icnt->icnt[ino-1] =+ 0100;
+	if(ip->i_nlink)
+		icnt->icnt[ino-1] =+ 0100 + ip->i_nlink;
+	if((ip->i_mode&IFCHR&IFBLK) != 0) {
+		nspcl++;
+		return;
+	}
+	if (ip->i_size0)
+		printf("%l big\n", ino);
+	df = 0;
+	if((ip->i_mode&IFMT) == IFDIR) {
+		df = ldiv(ip->i_size0, ip->i_size1, 16);
+		if(lflg) {
+			if(--nnf<0) {
+				nnf = 100;
+				edn = sbrk(6*101);
+			}
+			edn->pnum = 0;
+			edn->inum = ino;
+			edn++;
+		}
+		ndir++;
+	}
+	nfile++;
+	lastblock = 0;
+	tmove = 0;
+	if((ip->i_mode&ILARG) != 0) {
+		nlarg++;
+		for(i=0; i<8; i++)
+		if(ip->i_addr[i] != 0) {
+			nindir++;
+			if(chk(ip->i_addr[i], "idir", 0))
+				continue;
+			bread(ip->i_addr[i], buf);
+			for(j=0; j<256; j++)
+			if(buf[j] != 0)
+				chk(buf[j], "ldir", df);
+			df =- 32;
+		}
+		return;
+	}
+	for(i=0; i<8; i++) {
+		if(ip->i_addr[i] != 0)
+			chk(ip->i_addr[i], "sdir", df);
+		df =- 32;
+	}
+}
+
+chk(i, s, df)
+char *i;
+{
+	int n, b, j, buf[256];
+	int xx;
+	struct {
+		int	ino;
+		char	name[14];
+	};
+
+	if (lastblock) {
+		if (lastblock > i)
+			xx = lastblock - i;
+		else
+			xx = i - lastblock;
+		nblock++;
+		tmove =+ xx;
+		if (xx<0)
+			tmove =+ 65536.0;
+	}
+	lastblock = i;
+	for(j=0; j<nblist; j++)
+		if(i == blist[j])
+			fprintf("%l blk; i=%l(%s)\n", i, ino, s);
+	if(ino) {
+		nused++;
+		if(i > hiwat)
+			hiwat = i;
+	}
+	if(i<sblock.s_isize+2 || i>=sblock.s_fsize) {
+		fprintf("%l bad; i=%l(%s)\n", i, ino, s);
+		return(1);
+	}
+	n = ldiv(0, i, 16);
+	b = lrem(0, i, 16);
+	if(bmap[n] & (1<<b)) {
+		if(ino == 0) {
+			ndup++;
+			return(0);
+		}
+		fprintf("%l dup; i=%l(%s)\n", i, ino, s);
+		return(1);
+	}
+	bmap[n] =| 1<<b;
+	if(df>0) {
+		bread(i, buf);
+		for(n=0; n<256; n=+8) {
+			if(df <= 0)
+				break;
+			df--;
+			if((b=buf[n]) == 0)
+				continue;
+			if (lflg)
+			if(!(buf[n].name[0]=='.' &&
+			  (buf[n].name[1]=='\0' ||
+			  (buf[n].name[1]=='.' && buf[n].name[2]=='\0')))) {
+				if (--nnf<0) {
+					nnf = 100;
+					edn = sbrk(6*101);
+				}
+				edn->pnum = ino;
+				edn->inum = buf[n];
+				edn->nptr = lfptr;
+				for (j=0; j<14; j++)
+					if(buf[n].name[j] == '\0')
+						break;
+				j++;
+				write(lfdes, buf[n].name, j);
+				lfptr =+ j;
+				edn++;
+			}
+			for(j=0; j<ndlist; j++)
+				if(b == dlist[j])
+				fprintf("%l ino; i=%l(%s) \"%.16s\"\n",
+				  b, ino, s, buf+n+1);
+			if(b<1 || b>16*sblock.s_isize) {
+				fprintf("%l din; i=%l(%s)\n", i, ino, s);
+				continue;
+			}
+			icnt->icnt[b-1]--;
+		}
+	}
+	return(0);
+}
+
+pfilename(dp, recur)
+struct fname *dp;
+{
+	struct fname *p;
+	char name[14];
+
+	if (++recur > 10)
+		printf("...");
+	else if (dp->pnum != 1) {
+		for (p = dn; p<edn; p++) {
+			if (p->inum==dp->pnum && p->pnum!=0) {
+				pfilename(p, recur);
+				goto yes;
+			}
+		}
+		printf("???");
+	    yes:
+		printf("/");
+	}
+	seek(lfdes, dp->nptr,  0);
+	read(lfdes, name, 14);
+	printf("%.14s", name);
+}
+
+alloc()
+{
+	int b, i, buf[256];
+
+	i = --sblock.s_nfree;
+	if(i<0 || i>=100) {
+		fprintf("bad freeblock\n");
+		return(0);
+	}
+	b = sblock.s_free[i];
+	if(b == 0)
+		return(0);
+	if(sblock.s_nfree <= 0) {
+		bread(b, buf);
+		sblock.s_nfree = buf[0];
+		for(i=0; i<100; i++)
+			sblock.s_free[i] = buf[i+1];
+	}
+	return(b);
+}
+
+bread(bno, buf)
+{
+
+	seek(fi, bno, 3);
+	if(read(fi, buf, 512) != 512) {
+		fprintf("read error %d\n", bno);
+		exit();
+	}
+}
+
+free(in)
+{
+	int i;
+	int buf[256];
+
+	if(sblock.s_nfree >= 100) {
+		buf[0] = sblock.s_nfree;
+		for(i=0; i<100; i++)
+			buf[i+1] = sblock.s_free[i];
+		sblock.s_nfree = 0;
+		bwrite(in, buf);
+	}
+	sblock.s_free[sblock.s_nfree++] = in;
+}
+
+bwrite(bno, buf)
+{
+
+	seek(fi, bno, 3);
+	if(write(fi, buf, 512) != 512) {
+		fprintf("write error %d\n", bno);
+		exit();
+	}
+}
+
+number(s)
+char *s;
+{
+	int n, c;
+
+	n = 0;
+	while(c = *s++) {
+		if(c<'0' || c>'9')
+			continue;
+		n = n*10+c-'0';
+	}
+	return(n);
+}
+
+fprintf(a, b, c, d, e)
+{
+	printf(a, b, c, d, e);
+	flush();
+}
+-- /usr/ken/chess mode=0140755 uid=6 gid=1 atime=173637299 mtime=173637299 --
+-- /usr/ken/chess/agen.c mode=0100644 uid=6 gid=1 atime=173637304 mtime=173637304 --
+#include "old.h"
+
+bagen()
+{
+	int *p1, *p2, v;
+
+	p1 = lmp;
+	if((flag&010)!=0)
+	if(board[5]==0 && board[6]==0 && board[7]==4)
+	if(wattack(4) && wattack(5) && wattack(6))
+		btry(4, 0, 2); /* kingside castle */
+	if((flag&020)!=0)
+	if(board[0]==4 && board[1]==0 && board[2]==0 && board[3]==0)
+	if(wattack(2) && wattack(3) && wattack(4))
+		btry(4, 0, -2); /* queenside castle */
+	bgen();
+	p2 = p1;
+	while(p2 != lmp) {
+		v = *p2++;
+		bmove(*p2);
+		if(wattack(bkpos)) {
+			*p1++ = v;
+			*p1++ = *p2;
+		}
+		p2++;
+		bremove();
+	}
+	lmp = p1;
+}
+
+btry(from, mask, offset)
+int from, mask, offset;
+{
+
+	if((dir[from]&mask)==0)
+		bcheck(from, from+offset);
+}
+
+bcheck(from, to)
+int from, to;
+{
+
+	if(board[to]>0) return(1);
+	*lmp++ = (pval+6)[board[to]]-value;
+	*lmp++ = (from<<8)|to;
+	return(board[to] != 0);
+}
+
+wagen()
+{
+	int *p1, *p2, v;
+
+	p1 = lmp;
+	if((flag&1)!=0)
+	if(board[61]==0 && board[62]==0 && board[63]== -4)
+	if(battack(60) && battack(61) && battack(62))
+		wtry(60, 0, 2); /* kingside castle */
+	if((flag&2)!=0)
+	if(board[56]== -4 && board[57]==0 && board[58]==0 && board[59]==0)
+	if(battack(58) && battack(59) && battack(60))
+		wtry(60, 0, -2); /* queenside castle */
+	wgen();
+	p2 = p1;
+	while(p2 != lmp) {
+		v = *p2++;
+		wmove(*p2);
+		if(battack(wkpos)) {
+			*p1++ = v;
+			*p1++ = *p2;
+		}
+		p2++;
+		wremove();
+	}
+	lmp = p1;
+}
+
+wtry(from, mask, offset)
+int from, mask, offset;
+{
+
+	if((dir[from]&mask)==0)
+		wcheck(from, from+offset);
+}
+
+wcheck(from, to)
+int from, to;
+{
+
+	if(board[to]<0) return(1);
+	*lmp++ = value-(pval+6)[board[to]];
+	*lmp++ = (from<<8)|to;
+	return(board[to] != 0);
+}
+
+-- /usr/ken/chess/att.s mode=0100644 uid=6 gid=1 atime=173637306 mtime=173637306 --
+/ does white/black attack position?
+
+.globl	_battack
+.globl	_wattack
+
+.globl	_dir, _board
+
+uleft	= 04040;
+uright	= 04004;
+dleft	= 00440;
+dright	= 00404;
+left	= 00040;
+right	= 00004;
+up	= 04000;
+down	= 00400;
+u2r1	= 06004;
+u1r2	= 04006;
+d1r2	= 00406;
+d2r1	= 00604;
+d2l1	= 00640;
+d1l2	= 00460;
+u1l2	= 04060;
+u2l1	= 06040;
+
+_battack:
+	mov	2(sp),r0
+	asl	r0
+	mov	_dir(r0),r1
+	mov	$2,r2
+	bit	$u2r1,r1
+	bne	1f
+	cmp	_board+[-15.*2](r0),r2
+	beq	2f
+1:
+	bit	$u1r2,r1
+	bne	1f
+	cmp	_board+[-6.*2](r0),r2
+	beq	2f
+1:
+	bit	$d1r2,r1
+	bne	1f
+	cmp	_board+[+10.*2](r0),r2
+	beq	2f
+1:
+	bit	$d2r1,r1
+	bne	1f
+	cmp	_board+[+17.*2](r0),r2
+	beq	2f
+1:
+	bit	$d2l1,r1
+	bne	1f
+	cmp	_board+[+15.*2](r0),r2
+	beq	2f
+1:
+	bit	$d1l2,r1
+	bne	1f
+	cmp	_board+[+6.*2](r0),r2
+	beq	2f
+1:
+	bit	$u1l2,r1
+	bne	1f
+	cmp	_board+[-10.*2](r0),r2
+	beq	2f
+1:
+	bit	$u2l1,r1
+	bne	1f
+	cmp	_board+[-17.*2](r0),r2
+	beq	2f
+1:
+	jsr	r5,badiag; uleft; -9.*2
+	jsr	r5,badiag; uright; -7.*2
+	jsr	r5,badiag; dleft; 7.*2
+	jsr	r5,badiag; dright; 9.*2
+	jsr	r5,barank; up; -8.*2
+	jsr	r5,barank; left; -1.*2
+	jsr	r5,barank; right; 1.*2
+	jsr	r5,barank; down; 8.*2
+
+	bit	$uleft,_dir(r0)
+	bne	1f
+	cmp	_board-18.(r0),$1		/ pawn?
+	beq	2f
+1:
+	bit	$uright,_dir(r0)
+	bne	1f
+	cmp	_board-14.(r0),$1
+	bne	1f
+2:
+	clr	r0
+	rts	pc
+1:
+	mov	$1,r0
+	rts	pc
+
+badiag:
+	mov	r0,r1
+	mov	(r5)+,r2
+	mov	(r5)+,r3
+	bit	r2,_dir(r1)
+	bne	1f
+	add	r3,r1
+	mov	_board(r1),r4
+	beq	2f
+	cmp	r4,$3
+	beq	9f
+	cmp	r4,$5
+	beq	9f
+	cmp	r4,$6
+	beq	9f
+1:
+	rts	r5
+2:
+	bit	r2,_dir(r1)
+	bne	2f
+	add	r3,r1
+	mov	_board(r1),r4
+	beq	2b
+	cmp	r4,$3
+	beq	9f
+	cmp	r4,$5
+	beq	9f
+2:
+	rts	r5
+
+barank:
+	mov	r0,r1
+	mov	(r5)+,r2
+	mov	(r5)+,r3
+	bit	r2,_dir(r1)
+	bne	1f
+	add	r3,r1
+	mov	_board(r1),r4
+	beq	2f
+	cmp	r4,$4
+	beq	9f
+	cmp	r4,$5
+	beq	9f
+	cmp	r4,$6
+	beq	9f
+1:
+	rts	r5
+2:
+	bit	r2,_dir(r1)
+	bne	2f
+	add	r3,r1
+	mov	_board(r1),r4
+	beq	2b
+	cmp	r4,$4
+	beq	9f
+	cmp	r4,$5
+	beq	9f
+2:
+	rts	r5
+
+9:
+	mov	(sp)+,r5
+	clr	r0
+	rts	pc
+
+_wattack:
+	mov	2(sp),r0
+	asl	r0
+	mov	_dir(r0),r1
+	mov	$-2,r2
+	bit	$u2r1,r1
+	bne	1f
+	cmp	_board+[-15.*2](r0),r2
+	beq	2f
+1:
+	bit	$u1r2,r1
+	bne	1f
+	cmp	_board+[-6.*2](r0),r2
+	beq	2f
+1:
+	bit	$d1r2,r1
+	bne	1f
+	cmp	_board+[+10.*2](r0),r2
+	beq	2f
+1:
+	bit	$d2r1,r1
+	bne	1f
+	cmp	_board+[+17.*2](r0),r2
+	beq	2f
+1:
+	bit	$d2l1,r1
+	bne	1f
+	cmp	_board+[+15.*2](r0),r2
+	beq	2f
+1:
+	bit	$d1l2,r1
+	bne	1f
+	cmp	_board+[+6.*2](r0),r2
+	beq	2f
+1:
+	bit	$u1l2,r1
+	bne	1f
+	cmp	_board+[-10.*2](r0),r2
+	beq	2f
+1:
+	bit	$u2l1,r1
+	bne	1f
+	cmp	_board+[-17.*2](r0),r2
+	beq	2f
+1:
+	jsr	r5,wadiag; uleft; -9.*2
+	jsr	r5,wadiag; uright; -7.*2
+	jsr	r5,wadiag; dleft; 7.*2
+	jsr	r5,wadiag; dright; 9.*2
+	jsr	r5,warank; up; -8.*2
+	jsr	r5,warank; left; -1.*2
+	jsr	r5,warank; right; 1.*2
+	jsr	r5,warank; down; 8.*2
+
+	bit	$dleft,_dir(r0)
+	bne	1f
+	cmp	_board+14.(r0),$-1		/ pawn?
+	beq	2f
+1:
+	bit	$dright,_dir(r0)
+	bne	1f
+	cmp	_board+18.(r0),$-1
+	bne	1f
+2:
+	clr	r0
+	rts	pc
+1:
+	mov	$1,r0
+	rts	pc
+
+wadiag:
+	mov	r0,r1
+	mov	(r5)+,r2
+	mov	(r5)+,r3
+	bit	r2,_dir(r1)
+	bne	1f
+	add	r3,r1
+	mov	_board(r1),r4
+	beq	2f
+	cmp	r4,$-3
+	beq	9f
+	cmp	r4,$-5
+	beq	9f
+	cmp	r4,$-6
+	beq	9f
+1:
+	rts	r5
+2:
+	bit	r2,_dir(r1)
+	bne	2f
+	add	r3,r1
+	mov	_board(r1),r4
+	beq	2b
+	cmp	r4,$-3
+	beq	9f
+	cmp	r4,$-5
+	beq	9f
+2:
+	rts	r5
+
+warank:
+	mov	r0,r1
+	mov	(r5)+,r2
+	mov	(r5)+,r3
+	bit	r2,_dir(r1)
+	bne	1f
+	add	r3,r1
+	mov	_board(r1),r4
+	beq	2f
+	cmp	r4,$-4
+	beq	9f
+	cmp	r4,$-5
+	beq	9f
+	cmp	r4,$-6
+	beq	9f
+1:
+	rts	r5
+2:
+	bit	r2,_dir(r1)
+	bne	2f
+	add	r3,r1
+	mov	_board(r1),r4
+	beq	2b
+	cmp	r4,$-4
+	beq	9f
+	cmp	r4,$-5
+	beq	9f
+2:
+	rts	r5
+
+9:
+	mov	(sp)+,r5
+	clr	r0
+	rts	pc
+-- /usr/ken/chess/bgen.s mode=0100644 uid=6 gid=1 atime=173637308 mtime=173637308 --
+/ generate moves
+
+.globl	_bgen
+
+.globl	_pval, _board, _dir
+.globl	_flag, _lmp, _bkpos
+.globl	_eppos
+.globl	_value
+
+uleft	= 04040
+uright	= 04004
+dleft	= 00440
+dright	= 00404
+left	= 00040
+right	= 00004
+up	= 04000
+down	= 00400
+u2r1	= 06004
+u1r2	= 04006
+d1r2	= 00406
+d2r1	= 00604
+d2l1	= 00640
+d1l2	= 00460
+u1l2	= 04060
+u2l1	= 06040
+rank2	= 00200
+rank7	= 02000
+
+_bgen:
+	mov	$_dir+126.,r4
+	mov	$_board+126.,r3
+	mov	_lmp,r2
+	mov	$63.,r1
+0:
+	mov	(r3),r0
+	ble	1f
+	asl	r0
+	jmp	*2f-2(r0)
+
+2:
+	pawn
+	knight
+	bishop
+	rook
+	queen
+	king
+
+pawn:
+	bit	$dleft,(r4)
+	bne	2f
+	tst	2*7.(r3)
+	bge	3f
+	jsr	r5,btry; 0; 7.*2
+3:
+	mov	r1,r0
+	add	$7,r0
+	cmp	r0,_eppos
+	bne	2f
+	jsr	r5,btry; 0; -1*2
+2:
+	bit	$dright,(r4)
+	bne	2f
+	tst	9.*2(r3)
+	bge	3f
+	jsr	r5,btry; 0; 2*9.
+3:
+	mov	r1,r0
+	add	$9,r0
+	cmp	r0,_eppos
+	bne	2f
+	jsr	r5,btry; 0; 2*1
+2:
+	tst	2*8.(r3)
+	bne	1f
+	jsr	r5,btry; 0; 2*8.
+	bit	$rank7,(r4)
+	beq	1f
+	tst	2*16.(r3)
+	bne	1f
+	jsr	r5,btry; 0; 16.*2
+	br	1f
+
+knight:
+	jsr	r5,btry; u2r1; -15.*2
+	jsr	r5,btry; u1r2; -6.*2
+	jsr	r5,btry; d1r2; 10.*2
+	jsr	r5,btry; d2r1; 17.*2
+	jsr	r5,btry; d2l1; 15.*2
+	jsr	r5,btry; d1l2; 6.*2
+	jsr	r5,btry; u1l2; -10.*2
+	jsr	r5,btry; u2l1; -17.*2
+	br	1f
+
+
+1:
+	cmp	-(r4),-(r3)
+	dec	r1
+	bpl	0b
+	mov	r2,_lmp
+	rts	pc
+
+bishop:
+	jsr	r5,bslide; uleft; -9.*2
+	jsr	r5,bslide; uright; -7.*2
+	jsr	r5,bslide; dleft; 7.*2
+	jsr	r5,bslide; dright; 9.*2
+	br	1b
+
+rook:
+	jsr	r5,bslide; up; -8.*2
+	jsr	r5,bslide; down; 8.*2
+	jsr	r5,bslide; left; -1.*2.
+	jsr	r5,bslide; right; 1.*2
+	br	1b
+queen:
+	jsr	r5,bslide; uleft; -9.*2
+	jsr	r5,bslide; uright; -7.*2
+	jsr	r5,bslide; dleft; 7.*2
+	jsr	r5,bslide; dright; 9.*2
+	jsr	r5,bslide; up; -8.*2
+	jsr	r5,bslide; left; -1.*2
+	jsr	r5,bslide; right; 1.*2
+	jsr	r5,bslide; down; 8.*2
+	br	1b
+
+king:
+	jsr	r5,btry; uleft; -9.*2
+	jsr	r5,btry; uright; -7.*2
+	jsr	r5,btry; dleft; 7.*2
+	jsr	r5,btry; dright; 9.*2
+	jsr	r5,btry; up; -8.*2
+	jsr	r5,btry; left; -1.*2
+	jsr	r5,btry; right; 1.*2
+	jsr	r5,btry; down; 8.*2
+	br	1b
+
+btry:
+	bit	(r5)+,(r4)
+	bne	1f
+	mov	r3,r0
+	add	(r5),r0
+	mov	(r0),r0
+	bgt	1f
+	asl	r0
+	mov	_pval+12.(r0),(r2)
+	sub	_value,(r2)+
+	mov	(r5)+,r0
+	asr	r0
+	add	r1,r0
+	movb	r0,(r2)+
+	movb	r1,(r2)+
+	rts	r5
+1:
+	tst	(r5)+
+	rts	r5
+
+bslide:
+	mov	r4,-(sp)
+	mov	r3,-(sp)
+1:
+	bit	(r5)+,(r4)
+	bne	1f
+	add	(r5),r3
+	add	(r5),r4
+	mov	(r3),r0
+	bgt	1f
+	blt	2f
+	clr	(r2)
+	sub	_value,(r2)+
+	mov	r3,r0
+	sub	$_board,r0
+	asr	r0
+	movb	r0,(r2)+
+	movb	r1,(r2)+
+	tst	-(r5)
+	br	1b
+2:
+	asl	r0
+	mov	_pval+12.(r0),(r2)
+	sub	_value,(r2)+
+	mov	r3,r0
+	sub	$_board,r0
+	asr	r0
+	movb	r0,(r2)+
+	movb	r1,(r2)+
+1:
+	tst	(r5)+
+	mov	(sp)+,r3
+	mov	(sp)+,r4
+	rts	r5
+-- /usr/ken/chess/bheur.c mode=0100644 uid=6 gid=1 atime=173637309 mtime=173637309 --
+#include "old.h"
+
+/*
+ *	mobility
+ *	1 for each potential move
+ */
+
+bheur1()
+{
+
+	return(-wheur1());
+}
+
+/*
+ *	opening 'goodies'
+ *	10 for each minor piece out
+ *	-10 for blocking kq pawns
+ */
+
+bheur2()
+{
+	int i, mt;
+
+	i = 0;
+	if(game > 2) return(i);
+	mt = amp[-1];
+	if(mt == 2 || mt == 3) i =+ 30;
+	if(mt == 0) i =- 20;
+	i =+ 9*((board[1] != 2)+
+		(board[6] != 2));
+	i =+ 8*((board[2] != 3)+
+		(board[5] != 3));
+
+	/*
+	 * -10 for blocked central pawns
+	 */
+	if(board[11]==1 && board[11+8]!=0) i =- 10;
+	if(board[12]==1 && board[12+8]!=0) i =- 10;
+	return(i);
+}
+
+/*
+ *	ability to castle
+ *	22 for both flags
+ *	20 for one flag
+ */
+
+bheur3()
+{
+	int i;
+
+	i = 0;
+	/*
+	 * queenside ability
+	 */
+	if(flag&020 && board[8]==1 && board[9]==1 && board[10]==1)
+		i =+ 20;
+	/*
+	 *  kingside ability
+	 */
+	if(flag&010 && board[13]==1 && board[14]==1 && board[15]==1)
+		i =+ 20;
+	/*
+	 * if both
+	 */
+	if(i == 40)
+		i = 22;
+	/*
+	 * if castled,
+	 * keep pawns in
+	 */
+	if(bkpos==2)
+		if(board[10]==1 && (board[8]==1 || board[8+8]==1) &&
+			(board[9]==1 || board[9+8]==1))
+				i =+ 40;
+	if(bkpos==6)
+		if(board[13]==1 && (board[14]==1 || board[14+8]==1) &&
+			(board[15]== -1 || board[15+8]== -1))
+				i =+ 40;
+	return(i);
+}
+
+/*
+ *	prance
+ *	a percentage if the
+ *	piece on the move
+ *	can be driven back
+ *	by a smaller piece
+ */
+
+bheur4()
+{
+	int *p1, *p2, ploc, i;
+
+	if(amp[-1] != 1) return(0);
+	ploc = amp[-3];
+	if(board[ploc] == 1) return(0);
+	if(xheur(ploc)) return(0);
+	p1 = lmp;
+	p2 = p1;
+	wagen();
+	i = 0;
+	while(p2 != lmp) {
+		p2++;
+		wmove(*p2++);
+		i = xheur(ploc);
+		wremove();
+		if(i)
+			break;
+	}
+	lmp = p1;
+	return(-i);
+}
+
+/*
+ *	control
+ *	center control
+ *		opening
+ *		beginning
+ *	king control
+ *		middle
+ *		end
+ */
+
+bheur5()
+{
+
+	return(-wheur5());
+}
+-- /usr/ken/chess/bmove.s mode=0100644 uid=6 gid=1 atime=173637310 mtime=173637310 --
+.globl	_bmove, _bremove
+.globl	_board, _pval, _amp, _flag, _eppos, _value, _bkpos
+.globl	_game
+
+_bmove:
+	mov	_amp,r4
+	movb	2(sp),r3		/ to
+	movb	3(sp),r2		/ from
+	mov	_value,(r4)+
+	mov	_flag,(r4)+
+	mov	_eppos,(r4)+
+	mov	r2,(r4)+
+	mov	r3,(r4)+
+	asl	r2			/ from as a word index
+	asl	r3			/ to as word index
+	mov	_board(r3),r0
+	mov	r0,(r4)+
+	beq	1f
+	asl	r0
+	sub	_pval+12.(r0),_value
+	cmp	r0,$-2
+	bne	1f
+	cmp	r3,$24.*2
+	bge	1f
+	add	$25.,_value
+	cmp	r3,$16.*2
+	bge	1f
+	add	$50.,_value
+1:
+	mov	_board(r2),r0
+	mov	r0,_board(r3)
+	clr	_board(r2)
+	mov	$-1,_eppos
+	asl	r0
+	ble	error
+	jmp	*0f-2(r0)		/ type of man
+0:
+	pmove
+	nmove
+	bmove
+	rmove
+	qmove
+	kmove
+
+error:
+	3
+
+pmove:
+	sub	r3,r2
+	bge	1f
+	neg	r2
+1:
+	cmp	r2,$2*1			/ ep capture
+	bne	1f
+	clr	_board(r3)
+	mov	$1,_board+[2*8.](r3)
+	mov	$4,(r4)+
+	mov	r4,_amp
+	rts	pc
+1:
+	cmp	r2,$2*16.		/ double move
+	bne	1f
+	movb	3(sp),r2
+	add	$8,r2
+	mov	r2,_eppos
+	br	move
+1:
+	cmp	r3,$40.*2
+	blt	move
+	add	$25.,_value
+	cmp	r3,$48.*2
+	blt	move
+	add	$50.,_value
+	cmp	r3,$56.*2		/ queen promotion
+	blt	move
+	add	$625.,_value
+	mov	$5,_board(r3)
+	mov	$5,(r4)+
+	mov	r4,_amp
+	rts	pc
+
+rmove:
+	cmp	r2,$2*7.
+	bne	1f
+	bic	$10,_flag
+	br	move
+1:
+	tst	r2
+	bne	move
+	bic	$20,_flag
+	br	move
+
+kmove:
+	asr	r3
+	mov	r3,_bkpos
+	bic	$30,_flag
+	cmp	r2,$2*4.
+	bne	2f
+	cmp	r3,$6			/ kingside castle
+	bne	1f
+	inc	_value
+	mov	$4,_board+[2*5.]
+	clr	_board+[2*7.]
+	mov	$2,(r4)+
+	mov	r4,_amp
+	rts	pc
+1:
+	cmp	r3,$2			/ queenside castle
+	bne	2f
+	inc	_value
+	mov	$4,_board+[2*3.]
+	clr	_board+[2*0.]
+	mov	$3,(r4)+
+	mov	r4,_amp
+	rts	pc
+2:					/ king move
+	tst	_game
+	bne	1f
+	sub	$2,_value
+1:
+	clr	(r4)+
+	mov	r4,_amp
+	rts	pc
+
+qmove:
+	tst	_game
+	bne	move
+	dec	_value
+	br	move
+
+nmove:
+bmove:
+move:
+	mov	$1,(r4)+
+	mov	r4,_amp
+	rts	pc
+
+_bremove:
+	mov	_amp,r4
+	mov	-(r4),r0
+	mov	-(r4),r1
+	mov	-(r4),r3
+	mov	-(r4),r2
+	mov	-(r4),_eppos
+	mov	-(r4),_flag
+	mov	-(r4),_value
+	mov	r4,_amp
+	asl	r2
+	asl	r3
+	mov	_board(r3),_board(r2)
+	mov	r1,_board(r3)
+	asl	r0
+	jmp	*0f(r0)
+0:
+	movek
+	movex
+	moveo
+	moveoo
+	movep
+	moveq
+
+movek:
+	asr	r2
+	mov	r2,_bkpos
+
+movex:
+	rts	pc
+
+moveo:
+	mov	$4,_board+[2*7.]
+	clr	_board+[2*5]
+	mov	$4,_bkpos
+	rts	pc
+
+moveoo:
+	mov	$4,_board+[2*0]
+	clr	_board+[2*3]
+	mov	$4,_bkpos;
+	rts	pc
+
+movep:
+	mov	$1,_board(r2)
+	clr	_board+[2*8.](r3)
+	rts	pc
+
+moveq:
+	mov	$1,_board(r2)
+	rts	pc
+-- /usr/ken/chess/book.c mode=0100644 uid=6 gid=1 atime=173637311 mtime=173637311 --
+#include "old.h"
+
+bookm()
+{
+	int i, buf[2];
+
+	if(!bookp) return(0);
+	seek(bookf, bookp, 0);
+
+	i = 0;
+loop:
+	read(bookf, buf, 4);
+	*buf = booki(*buf);
+	if(*buf >= 0) {
+		if(!i)
+			i = *buf;
+		goto loop;
+	}
+	if(abmove = i)
+		return(1);
+	return(0);
+}
+
+makmov(m)
+{
+	int buf[2];
+
+	out1(m);
+	mantom? bmove(m): wmove(m);
+	increm();
+	if(!bookp) return;
+	seek(bookf, bookp, 0);
+
+loop:
+	read(bookf, buf, 4);
+	*buf = booki(*buf);
+	if(m == *buf || *buf == 0) {
+		bookp = buf[1] & ~1;
+		goto l1;
+	}
+	if(*buf < 0) {
+		bookp = 0;
+		goto l1;
+	}
+	goto loop;
+
+l1:
+	if(!bookp) {
+		putchar('\n');
+		return;
+	}
+}
+
+booki(m)
+{
+	int i;
+	struct {
+		char low;
+		char high;
+	};
+	i.high = m.low;
+	i.low = m.high;
+	return(i);
+}
+
+-- /usr/ken/chess/bplay.c mode=0100644 uid=6 gid=1 atime=173637312 mtime=173637312 --
+#include "old.h"
+
+bplay()
+{
+	int v1, v2, *p1, *p2, *p3, ab;
+
+	if(value > ivalue)
+		ivalue = value;
+	ab = 0;
+	v1 = -3000;
+	ply = 0;
+	p1 = statl();
+	if(lmp == p1+2) {
+		abmove = p1[1];
+		lmp = p1;
+		return(ivalue);
+	}
+	p2 = p1;
+	mantom = !mantom;
+	while(p2 != lmp) {
+		p2++;
+		bmove(*p2);
+		if(rept())
+			v2 = 0; else
+			v2 = wplay1(v1);
+		if(v2 > v1 && !mate(3, 0)) {
+			ab = *p2;
+			v1 = v2;
+		}
+		bremove();
+		p2++;
+	}
+	if(ab == 0 && lmp != p1)
+		ab = p1[1];
+	mantom = !mantom;
+	lmp = p1;
+	abmove = ab;
+	return(v1);
+}
+
+bplay1(ab)
+int ab;
+{
+	int v1, v2, *p1, *p2;
+
+	if(ply >= depth)
+		return(bquies(ab));
+	ply++;
+	p1 = p2 = lmp;
+	bgen();
+	qsort(p1, lmp);
+	v1 = -3000;
+	while(p2 != lmp) {
+		if(intrp)
+			goto out;
+		p2++;
+		bmove(*p2);
+		if(wattack(bkpos)) {
+			v2 = wplay1(v1);
+			if(v2 > v1)
+				v1 = v2;
+		}
+		bremove();
+		if(v1 >= ab)
+			goto out;
+		p2++;
+	}
+out:
+	ply--;
+	lmp = p1;
+	if(v1 == -3000) {
+		v1++;
+		if(!check())
+			v1 = 0;
+	}
+	return(v1);
+}
+
+bquies(ab)
+int ab;
+{
+	int *p1, *p2, *p3, v1, v2;
+
+	if(ply >= qdepth)
+		return(ivalue);
+	p1 = p2 = p3 = lmp;
+	bgen();
+	while(p2 != lmp) {
+		v1 = -(*p2++);
+		if(v1 != value && v1 >= ivalue-50) {
+			*p3++ = ((-(pval+6)[board[*p2>>8]]/100)<<8) |
+				((pval+6)[board[*p2&0377]]/100);
+			*p3++ = *p2;
+		}
+		p2++;
+	}
+	if(p3 == p1) {
+		lmp = p1;
+		return(value);
+	}
+	ply++;
+	qsort(p1, p3);
+	lmp = p3;
+	p2 = p1;
+	v1 = value;
+	while(p2 != lmp) {
+		p2++;
+		bmove(*p2);
+		if(wattack(bkpos)) {
+			v2 = wquies(v1);
+		} else
+			v2 = -3000;
+		if(v2 > v1)
+			v1 = v2;
+		bremove();
+		if(v1 >= ab)
+			goto out;
+		p2++;
+	}
+out:
+	ply--;
+	lmp = p1;
+	return(v1);
+}
+-- /usr/ken/chess/ctrl.s mode=0100644 uid=6 gid=1 atime=173637313 mtime=173637313 --
+/ list pieces controlling a square
+
+.globl	_attack
+
+.globl	_dir, _board
+.globl	_attacv
+
+none	= 12345
+uleft	= 04040;
+uright	= 04004;
+dleft	= 00440;
+dright	= 00404;
+left	= 00040;
+right	= 00004;
+up	= 04000;
+down	= 00400;
+u2r1	= 06004;
+u1r2	= 04006;
+d1r2	= 00406;
+d2r1	= 00604;
+d2l1	= 00640;
+d1l2	= 00460;
+u1l2	= 04060;
+u2l1	= 06040;
+
+_attack:
+	mov	2(sp),r0
+	asl	r0
+	mov	$_attacv,r4
+
+	jsr	r5,patt
+		u2r1
+		-15.*2
+		2; -2
+	jsr	r5,patt
+		u1r2
+		-6.*2
+		2; -2
+	jsr	r5,patt
+		d2r1
+		17.*2
+		2; -2
+	jsr	r5,patt
+		d2l1
+		15.*2
+		2; -2
+	jsr	r5,patt
+		d1l2
+		6.*2
+		2; -2
+	jsr	r5,patt
+		u1l2
+		-10.*2
+		2; -2
+	jsr	r5,patt
+		u2l1
+		-17.*2
+		2; -2
+
+	jsr	r5,satt
+		uleft; -9.*2
+		1
+		3; -3; 5; -5
+	jsr	r5,satt
+		uright; -7.*2
+		1
+		3; -3; 5; -5
+	jsr	r5,satt
+		dleft; 7.*2
+		-1
+		3; -3; 5; -5
+	jsr	r5,satt
+		dright; 9.*2
+		-1
+		3; -3; 5; -5
+	jsr	r5,satt
+		up; -8.*2
+		none
+		4; -4; 5; -5
+	jsr	r5,satt
+		left; -1.*2
+		none
+		4; -4; 5; -5
+	jsr	r5,satt
+		right; 1.*2
+		none
+		4; -4; 5; -5
+	jsr	r5,satt
+		down; 8.*2
+		none
+		4; -4; 5; -5
+	clr	(r4)+
+	rts	pc
+
+patt:
+	bit	(r5)+,_dir(r0)
+	bne	1f
+	mov	r0,r1
+	add	(r5)+,r1
+	jsr	pc,look
+	jsr	pc,look
+	rts	r5
+1:
+	add	$6,r5
+	rts	r5
+
+satt:
+	mov	r5,-(sp)
+	bit	(r5)+,_dir(r0)
+	bne	1f
+	mov	r0,r1
+	add	(r5)+,r1
+	jsr	pc,look			/ pawn
+	mov	r0,r1
+2:
+	mov	(sp),r5
+	bit	(r5)+,_dir(r1)
+	bne	1f
+	add	(r5)+,r1
+	tst	_board(r1)
+	beq	2b
+	tst	(r5)+
+	mov	r4,-(sp)
+	jsr	pc,look
+	jsr	pc,look
+	jsr	pc,look
+	jsr	pc,look
+	cmp	(sp)+,r4
+	bne	2b
+1:
+	mov	(sp)+,r5
+	add	$14.,r5
+	rts	r5
+
+look:
+	cmp	(r5)+,_board(r1)
+	bne	1f
+	mov	-2(r5),(r4)+
+1:
+	rts	pc
+-- /usr/ken/chess/data.c mode=0100644 uid=6 gid=1 atime=173637314 mtime=173637314 --
+int	center[]
+{
+	2,3,4,4,4,4,3,2,
+	3,6,8,8,8,8,6,3,
+	4,8,12,12,12,12,8,4,
+	4,8,12,14,14,12,8,4,
+	4,8,12,14,14,12,8,4,
+	4,8,12,12,12,12,8,4,
+	3,6,8,8,8,8,6,3,
+	2,3,4,4,4,4,3,2
+};
+
+int	wheur[]
+{
+	wheur1,
+	wheur2,
+	wheur3,
+	wheur4,
+	wheur5,
+	0
+};
+
+bheur[]
+{
+	bheur1,
+	bheur2,
+	bheur3,
+	bheur4,
+	bheur5,
+	0
+};
+
+pval[]
+{
+	-3000, -900, -500, -300, -300, -100,
+	0,
+	100, 300, 300, 500, 900, 3000
+};
+
+int	moveno	1;
+int	depth	2;
+int	qdepth	8;
+int	mdepth	4;
+int	flag	033;
+int	eppos	64;
+int	bkpos	4;
+int	wkpos	60;
+edge[]
+{
+	040, 020, 010, 0, 0, 1, 2, 4
+};
+-- /usr/ken/chess/init.c mode=0100644 uid=6 gid=1 atime=173637315 mtime=173637315 --
+#include "old.h"
+
+main()
+{
+	int i;
+
+	printf("Chess\n");
+	itinit();
+	lmp = lmbuf;
+	amp = ambuf;
+	*amp++ = -1;
+	*lmp++ = -1;		/* fence */
+	bookf = open("/usr/lib/book", 0);
+	if(bookf > 0)
+		read(bookf, &bookp, 2);
+	i = 0;
+	board[i++] = 4;
+	board[i++] = 2;
+	board[i++] = 3;
+	board[i++] = 5;
+	board[i++] = 6;
+	board[i++] = 3;
+	board[i++] = 2;
+	board[i] = 4;
+	i = 8;
+	while(i--) {
+		board[i+8] = 1;
+		board[48+i] = -1;
+		board[56+i] = -board[i];
+	}
+
+	i = 64;
+	while(i--)
+		dir[i] = (edge[i/8]<<6) | edge[i%8];
+	play(0);
+}
+
+ctime(s, t)
+{
+
+	printf("%s: %d:%d%d\n", s, t/60, (t/10)%6, t%10);
+}
+
+check()
+{
+
+	return((!wattack(bkpos) || !battack(wkpos))? 1: 0);
+}
+
+increm()
+{
+
+	clktim[mantom] =+ clock();
+	if(mantom)
+		moveno++;
+	mantom = !mantom;
+}
+
+decrem()
+{
+
+	mantom = !mantom;
+	if(mantom)
+		moveno--;
+}
+
+stage()
+{
+	int i, a;
+
+	if(value > 150)
+		gval = 1; else
+	if(value < -150)
+		gval = -1; else
+		gval = 0;
+	i = -6;
+	while(i <= 6) {
+		a = (pval+6)[i];
+		if(a < 0)
+			a =- 50; else
+			a =+ 50;
+		if(a < 0)
+			a = -((-a)/100); else
+			a =/ 100;
+		if(i)
+			(pval+6)[i] = a*100-gval;
+		i++;
+	}
+	a = 13800;
+	i = 64;
+	while(i--)
+		a =- abs((pval+6)[board[i]]);
+	if(a > 4000)
+		game = 3; else
+	if(a > 2000)
+		game = 2; else
+	if(moveno > 5)
+		game = 1; else
+		game = 0;
+}
+
+posit(f, p, a)
+int (*f)();
+int *p;
+{
+	int m;
+
+	while(amp != p) {
+		m = amp[3]<<8;
+		m =| amp[4]&0377;
+		(*f)(m, a);
+		if(mantom) {
+			bmove(m);
+			moveno++;
+			mantom = 0;
+		} else {
+			wmove(m);
+			mantom = 1;
+		}
+	}
+}
+
+rept1(m, a)
+int *a;
+{
+	int i;
+
+	if(mantom != a[64])
+		return;
+	for(i=0; i<64; i++)
+		if(board[i] != a[i])
+			return;
+	a[65]++;
+}
+
+rept()
+{
+	int a[66], i, *p;
+
+	for(i=0; i<64; i++)
+		a[i] = board[i];
+	a[64] = mantom;
+	a[65] = 0;
+	p = amp;
+	while(amp[-1] != -1) {
+		if(amp[-2])
+			break;
+		i = board[amp[-3]];
+		if(i == 1 || i == -1)
+			break;
+		mantom? wremove(): bremove();
+		decrem();
+	}
+	posit(rept1, p, a);
+	return(a[65]);
+}
+-- /usr/ken/chess/io.c mode=0100644 uid=6 gid=1 atime=173637316 mtime=173637316 --
+#include "old.h"
+
+rline()
+{
+	char *p1;
+	int c;
+
+	p1 = sbuf;
+	while((c = getchar()) != '\n')
+		if(c <= 0)
+			onhup(); else
+			*p1++ = c;
+	*p1++ = '\0';
+}
+
+getchar()
+{
+	int c;
+
+loop:
+	c = 0;
+	if(read(0, &c, 1) <= 0) {
+		if(intrp) {
+			intrp = 0;
+			goto loop;
+		}
+		return(0);
+	}
+	return(c);
+}
+
+pboard()
+{
+	int i, x, y, c, p;
+
+	c = 0;
+	i = 0;
+	x = 8;
+	while(x--) {
+		if(!mantom || mfmt)
+			putchar('1'+x); else
+			putchar('8'-x);
+		putchar(' ');
+		c++;
+		y = 8;
+		while(y--) {
+			c++;
+			putchar(' ');
+			if(p = board[i++])
+				putchar("kqrbnp PNBRQK"[p+6]); else
+				if((c&1)!=0)
+					putchar('*'); else
+					putchar('-');
+		}
+		putchar('\n');
+		if(intrp)
+			return;
+	}
+	if(mfmt)
+		printf("\n   a b c d e f g h"); else
+		printf("\n   q q q q k k k k\n   r n b     b n r");
+		printf("\n");
+}
+
+out1(m)
+{
+	printf("%d. ", moveno);
+	if(mantom)
+		printf("... ");
+	out(m);
+	putchar('\n');
+}
+
+out(m)
+int m;
+{
+	int from, to, epf, pmf;
+
+	from = m>>8;
+	to = m&0377;
+	if(mfmt) {
+		algco(from);
+		algco(to);
+		return;
+	}
+	mantom? bmove(m): wmove(m);
+	epf = pmf = 0;
+	switch(amp[-1]) {
+
+	case 0:
+	case 1:
+		stdp(board[to]);
+	ed:
+		putchar('/');
+		stdb(from);
+		if(amp[-2]) {
+			putchar('x');
+			stdp(amp[-2]);
+			putchar('/');
+		} else
+			putchar('-');
+		stdb(to);
+		break;
+
+	case 3:
+		putchar('o');
+		putchar('-');
+
+	case 2:
+		putchar('o');
+		putchar('-');
+		putchar('o');
+		break;
+
+	case 4:
+		epf = 1;
+		putchar('p');
+		goto ed;
+
+	case 5:
+		pmf = 1;
+		putchar('p');
+		goto ed;
+	}
+	if(pmf) {
+		putchar('(');
+		putchar('q');
+		putchar(')');
+	}
+	if(epf) {
+		putchar('e');
+		putchar('p');
+	}
+	if(check())
+		putchar('+');
+	mantom? bremove(): wremove();
+}
+
+stdp(p)
+int p;
+{
+
+	if(p < 0)
+		p = -p;
+	p = "ppnbrqk"[p];
+	putchar(p);
+}
+
+stdb(b)
+int b;
+{
+	int r, f;
+
+	r = b/8;
+	if((f = b%8) < 4)
+		putchar('q'); else {
+		putchar('k');
+		f = 7-f;
+	}
+	f = "rnb\0"[f];
+	if(f)
+		putchar(f);
+	putchar(mantom? r+'1': '8'-r);
+}
+
+algco(p)
+int p;
+{
+	putchar('a'+(p%8));
+	putchar('8'-(p/8));
+}
+
+putchar(c)
+{
+
+	switch(c) {
+
+	case '\t':
+		do
+			putchar(' ');
+		while(column%8);
+		return;
+
+	case '\n':
+		column = 0;
+		break;
+
+	default:
+		column++;
+	}
+	write(1, &c, 1);
+}
+
+prtime(a, b)
+{
+
+	printf("time = %d/%d\n", a, b);
+}
+
+score1(m)
+{
+	if(intrp)
+		return;
+	if(!mantom) {
+		if(moveno < 10)
+			putchar(' '); else
+			putchar(moveno/10 + '0');
+		putchar(moveno%10 + '0');
+		putchar('.');
+		putchar(' ');
+	} else
+		while(column < 20)
+			putchar(' ');
+	out(m);
+	if(mantom)
+		putchar('\n');
+}
+
+score()
+{
+	int *p;
+
+	putchar('\n');
+	p = amp;
+	while(amp[-1] != -1) {
+		mantom? wremove(): bremove();
+		decrem();
+	}
+	posit(score1, p);
+	putchar('\n');
+}
+-- /usr/ken/chess/ld mode=0100644 uid=6 gid=1 atime=173637318 mtime=173637318 --
+cc -s -n\
+agen.o\
+att.o\
+bgen.o\
+bheur.o\
+bmove.o\
+book.o\
+bplay.o\
+ctrl.o\
+data.o\
+init.o\
+io.o\
+mater.o\
+play.o\
+qsort.o\
+savres.o\
+stat.o\
+stdin.o\
+wgen.o\
+wheur.o\
+wmove.o\
+wplay.o
+cp a.out /usr/games/chess
+cc -s -n\
+agen.o\
+att.o\
+bgen.o\
+bheur.o\
+bmove.o\
+book.o\
+bplay.o\
+ctrl.o\
+data.o\
+init.o\
+mater.o\
+pio.o\
+play.o\
+qsort.o\
+savres.o\
+stat.o\
+stdin.o\
+wgen.o\
+wheur.o\
+wmove.o\
+wplay.o
+cp a.out /usr/vs/bin/chess
+-- /usr/ken/chess/mater.c mode=0100644 uid=6 gid=1 atime=173637320 mtime=173637320 --
+#include "old.h"
+
+mate(n, f)
+{
+	int a, b;
+
+	mantom = !mantom;
+	if(f == 0) {
+		b = mater(n);
+		mantom = !mantom;
+		return(b);
+	}
+	b = 0;
+	if(matflg) {
+		a = 1;
+		while(!mater(a)) {
+			if(a >= n) {
+				matflg = 0;
+				return(0);
+			}
+			a++;
+		}
+		b = abmove;
+		goto out;
+	}
+	a = n;
+	while(mater(a)) {
+		if(a == mdepth) {
+			printf("forced mate\n");
+			matflg++;
+		}
+		b = abmove;
+		if(a == 0)
+			break;
+		a--;
+	}
+out:
+	mantom = !mantom;
+	if(b) {
+		abmove = b;
+		return(1);
+	}
+	return(0);
+}
+
+mater(ns)
+{
+	int *p1, *p2, *p3, f;
+
+	if(intrp || --ns < 0)
+		return(0);
+	p1 = lmp;
+	p2 = p1;
+	p3 = p1;
+	mantom? wgen(): bgen();
+	while(p2 != lmp) {
+		p2++;
+		mantom? wmove(*p2): bmove(*p2);
+		if((!mantom && !battack(wkpos) && wattack(bkpos)) ||
+		  (mantom && !wattack(bkpos) && battack(wkpos))) {
+			*p3 = *p2;
+			p3++;
+		}
+		mantom? wremove(): bremove();
+		p2++;
+	}
+	lmp = p3;
+	p2 = p1;
+	while(p2 != lmp) {
+		mantom? wmove(*p2): bmove(*p2);
+		f = xmater(ns);
+		mantom? wremove(): bremove();
+		if(f) {
+			abmove = *p2;
+			lmp = p1;
+			return(1);
+		}
+		p2++;
+	}
+	lmp = p1;
+	return(0);
+}
+
+xmater(ns)
+{
+	int *p1, *p2, f;
+
+	p1 = lmp;
+	p2 = p1;
+	mantom? bagen(): wagen();
+	if(p2+2 == lmp && rept() == 0)
+		ns++;
+	while(p2 != lmp) {
+		p2++;
+		mantom? bmove(*p2): wmove(*p2);
+		f = mater(ns);
+		mantom? bremove(): wremove();
+		if(!f) {
+			lmp = p1;
+			return(0);
+		}
+		p2++;
+	}
+	lmp = p1;
+	return(1);
+}
+-- /usr/ken/chess/old.h mode=0100644 uid=6 gid=1 atime=173637321 mtime=173637321 --
+#define	uleft	04040
+#define	uright	04004
+#define	dleft	00440
+#define	dright	00404
+#define	left	00040
+#define	right	00004
+#define	up	04000
+#define	down	00400
+#define	u2r1	06004
+#define	u1r2	04006
+#define	d1r2	00406
+#define	d2r1	00604
+#define	d2l1	00640
+#define	d1l2	00460
+#define	u1l2	04060
+#define	u2l1	06040
+#define	rank2	00200
+#define	rank7	02000
+
+int	attacv[64];
+int	center[64];
+int	wheur[];
+int	bheur[];
+int	control[64];
+int	clktim[2];
+int	qdepth;
+int	mdepth;
+int	bookf;
+int	bookp;
+int	manflg;
+int	matflg;
+int	intrp;
+int	moveno;
+int	gval;
+int	game;
+int	abmove;
+int	*lmp;
+int	*amp;
+char	*sbufp;
+int	lastmov;
+int	mantom;
+int	ply;
+int	value;
+int	ivalue;
+int	mfmt;
+int	depth;
+int	flag;
+int	eppos;
+int	bkpos;
+int	wkpos;
+int	column;
+int	edge[8];
+int	pval[13];
+int	dir[64];
+int	board[64];
+int	lmbuf[1000];
+int	ambuf[1200];
+char	sbuf[100];
+-- /usr/ken/chess/pio.c mode=0100644 uid=6 gid=1 atime=173637321 mtime=173637321 --
+#include "old.h"
+
+rline()
+{
+	char *p1;
+	int c;
+
+loop0:
+	p1 = sbuf;
+loop:
+	c = getchar();
+	if(c <= 0)
+		exit();
+	if(c == '#')
+		goto loop0;
+	if(c != '*' && c != '0') {
+		*p1++ = c;
+		goto loop;
+	}
+	switch(getchar()) {
+
+	case '#':
+		goto loop0;
+
+	case '*':
+	case '0':
+		if(p1 != sbuf+4) {
+			printf("bad input\n");
+			goto loop0;
+		}
+		sbuf[0] =+ 'a'-'1';
+		sbuf[2] =+ 'a'-'1';
+		*p1++ = '\0';
+		return;
+
+	case '9':
+		onhup();
+
+	case '1':
+		spread("");
+		return;
+
+	case '2':
+		spread("first");
+		return;
+
+	case '3':
+		spread("clock");
+		return;
+
+	case '4':
+		spread("score");
+		return;
+
+	case '5':
+		spread("remove");
+		return;
+
+	case '6':
+		spread("repeat");
+		return;
+
+	case '7':
+		spread("save");
+		return;
+
+	case '8':
+		spread("restore");
+		return;
+	}
+	printf("bad option\n");
+	goto loop;
+}
+
+spread(s)
+char *s;
+{
+	char *p;
+
+	p = sbuf;
+	while(*p++ = *s++) ;
+}
+
+pboard()
+{
+	int i, x, y, c, p;
+
+	i = 0;
+	x = 8;
+	while(x--) {
+		y = 8;
+		c = 0;
+		while(y--) {
+			p = board[i++];
+			if(p == 0) {
+				c++;
+				continue;
+			}
+			if(c) {
+				if(c != 1)
+					putnumb(c);
+				printf("space\n");
+				c = 0;
+			}
+			if(p < 0)
+				printf("white "); else
+				printf("black ");
+			putpiece("kqrbnp pnbrqk"[p+6]);
+		}
+		pause();
+		printf("end\n");
+		pause();
+	}
+}
+
+putpiece(p)
+{
+	char *s;
+
+	s = "god only knows";
+	switch(p) {
+
+	case 'p':
+		s = "pawn";
+		break;
+
+	case 'n':
+		s = "knight";
+		break;
+
+	case 'b':
+		s = "bishop";
+		break;
+
+	case 'r':
+		s = "rook";
+		break;
+
+	case 'q':
+		s = "queen";
+		break;
+
+	case 'k':
+		s = "king";
+		break;
+	}
+	printf("%s\n", s);
+}
+
+out1(m)
+{
+	putnumb(moveno);
+	pause();
+	out(m);
+	pause();
+}
+
+out(m)
+int m;
+{
+	int from, to, epf, pmf;
+
+	from = m>>8;
+	to = m&0377;
+	mantom? bmove(m): wmove(m);
+	epf = pmf = 0;
+	switch(amp[-1]) {
+
+	case 0:
+	case 1:
+		stdp(board[to]);
+	ed:
+		printf("at\n");
+		stdb(from);
+		if(amp[-2]) {
+			printf("takes\n");
+			stdp(amp[-2]);
+			printf("at\n");
+		} else
+			printf("to\n");
+		stdb(to);
+		break;
+
+	case 3:
+		printf("castle queen side\n");
+		break;
+
+	case 2:
+		printf("castle king side\n");
+		break;
+
+	case 4:
+		epf = 1;
+		putpiece('p');
+		goto ed;
+
+	case 5:
+		pmf = 1;
+		putpiece('p');
+		goto ed;
+	}
+	if(pmf) {
+		printf("becomes\n");
+		putpiece('q');
+	}
+	if(epf) {
+		printf("en passent\n");
+	}
+	if(check())
+		printf("check\n");
+	mantom? bremove(): wremove();
+}
+
+stdp(p)
+int p;
+{
+
+	if(p < 0)
+		p = -p;
+	p = "ppnbrqk"[p];
+	putpiece(p);
+}
+
+stdb(b)
+int b;
+{
+	int r, f;
+
+	r = b/8;
+	if((f = b%8) < 4)
+		putpiece('q'); else {
+		putpiece('k');
+		f = 7-f;
+	}
+	f = "rnb\0"[f];
+	if(f)
+		putpiece(f);
+	putnumb(mantom? r+1: 8-r);
+}
+
+prtime(a, b)
+{
+
+	printf("compute time is\n");
+	putnumb(a);
+	printf("real time is\n");
+	putnumb(b);
+	pause();
+}
+
+putnumb(n)
+{
+
+	if(n <= 12) {
+		putdig(n);
+		putchar('\n');
+		return;
+	}
+	if(n <= 19) {
+		putdig(n+1);
+		printf("teen\n");
+		return;
+	}
+	if(n >= 100) {
+		putnumb(n/100);
+		printf("hundred\n");
+		n =% 100;
+		if(n)
+			putnumb(n);
+		return;
+	}
+	putdig(n/10+11);
+	printf("tee\n");
+	n =% 10;
+	if(n)
+		putnumb(n);
+}
+
+putdig(n)
+{
+	char *s;
+
+	s = "god only knows";
+	switch(n) {
+
+	case 0:
+		s = "zero";
+		break;
+
+	case 1:
+		s = "one";
+		break;
+
+	case 2:
+		s = "two";
+		break;
+
+	case 3:
+		s = "three";
+		break;
+
+	case 4:
+	case 15:
+		s = "four";
+		break;
+
+	case 5:
+		s = "five";
+		break;
+
+	case 6:
+	case 17:
+		s = "six";
+		break;
+
+	case 7:
+	case 18:
+		s = "seven";
+		break;
+
+	case 8:
+	case 19:
+		s = "eight";
+		break;
+
+	case 9:
+	case 20:
+		s = "nine";
+		break;
+
+	case 10:
+		s = "ten";
+		break;
+
+	case 11:
+		s = "eleven";
+		break;
+
+	case 12:
+		s = "twelve";
+		break;
+
+	case 13:
+		s = "twen";
+		break;
+
+	case 14:
+		s = "thir";
+		break;
+
+	case 16:
+		s = "fif";
+		break;
+	}
+	printf(s);
+}
+
+pause()
+{
+
+	printf("...\n");
+}
+
+score1(m)
+{
+	if(!mantom) {
+		putnumb(moveno);
+		pause();
+	}
+	out(m);
+	pause();
+}
+
+score()
+{
+	int *p;
+
+	p = amp;
+	while(amp[-1] != -1) {
+		mantom? wremove(): bremove();
+		decrem();
+	}
+	posit(score1, p);
+	printf("the end\n");
+}
+-- /usr/ken/chess/play.c mode=0100644 uid=6 gid=1 atime=173637326 mtime=173637326 --
+#include "old.h"
+
+play(f)
+int f;
+{
+	int t, i, ts[7];
+
+	clock();
+	ts[6] = 0;
+	if(f) goto first;
+loop:
+	intrp = 0;
+	move();
+
+first:
+	if(manflg)
+		goto loop;
+	i = mantom;
+	t = clktim[i];
+	if(!bookm())
+	if(!mate(mdepth, 1))
+		xplay();
+	if(intrp) {
+		decrem();
+		mantom? bremove(): wremove();
+		goto loop;
+	}
+	if(!abmove) {
+		printf("Resign\n");
+		onhup();
+	}
+	makmov(abmove);
+	i = clktim[i];
+	t = i-t;
+	times(ts);
+	prtime((ts[0]-ts[6])/60, t);
+	ts[6] = ts[0];
+	if(i/moveno > 150) {
+		if(depth > 1)
+			goto decr;
+		goto loop;
+	}
+	if(depth==3 && t>180)
+		goto decr;
+	if(depth==1 && t<60)
+		goto incr;
+	if(game==3 && t<60 && depth==2)
+		goto incr;
+	goto loop;
+
+incr:
+	depth++;
+	goto loop;
+
+decr:
+	goto loop;
+}
+
+move()
+{
+	int a, *p, *p1;
+
+loop:
+	lmp = done();
+	a = manual();
+	p = done();
+	p1 = p;
+	while(p1 != lmp) {
+		p1++;
+		if(*p1++ == a) {
+			lmp = p;
+			makmov(a);
+			return;
+		}
+	}
+	printf("Illegal move\n");
+	lmp = p;
+	goto loop;
+}
+
+manual()
+{
+	int a, b, c;
+	char *p1;
+	extern out1;
+
+loop:
+	intrp = 0;
+	stage();
+	rline();
+	sbufp = sbuf;
+	if(match("save")) {
+		save();
+		goto loop;
+	}
+	if(match("remove")) {
+		if(amp[-1] != -1) {
+			decrem();
+			mantom? bremove(): wremove();
+		}
+		if(amp[-1] != -1) {
+			decrem();
+			mantom? bremove(): wremove();
+		}
+		goto loop;
+	}
+	if(match("exit"))
+		exit();
+	if(match("manual")) {
+		manflg = !manflg;
+		goto loop;
+	}
+	if(match("resign"))
+		onhup();
+	if(moveno == 1 && mantom == 0) {
+		if(match("first"))
+			play(1);
+		if(match("restore")) {
+			restore();
+			goto loop;
+		}
+	}
+	if(match("clock")) {
+		clktim[mantom] =+ clock();
+		ctime("white", clktim[0]);
+		ctime("black", clktim[1]);
+		goto loop;
+	}
+	if(match("score")) {
+		score();
+		goto loop;
+	}
+	if(match("hint")) {
+		a = xplay();
+		out(abmove);
+		printf(" %d\n", a);
+		goto loop;
+	}
+	if(match("repeat")) {
+		if(amp[-1] != -1) {
+			a = amp;
+			mantom? wremove(): bremove();
+			decrem();
+			posit(&out1, a);
+		}
+		goto loop;
+	}
+	if(*sbufp == '\0') {
+		pboard();
+		goto loop;
+	}
+	if((a=algin()) != 0) {
+		mfmt = 1;
+		return(a);
+	}
+	if((a=stdin()) != 0) {
+		mfmt = 0;
+		return(a);
+	}
+	printf("eh?\n");
+	goto loop;
+}
+
+algin()
+{
+	int from, to;
+
+	from = cooin();
+	to = cooin();
+	if(*sbufp != '\0') return(0);
+	return((from<<8)|to);
+}
+
+cooin()
+{
+	int a, b;
+
+	a = sbufp[0];
+	if(a<'a' || a>'h') return(0);
+	b = sbufp[1];
+	if(b<'1' || b>'8') return(0);
+	sbufp =+ 2;
+	a = (a-'a')+8*('8'-b);
+	return(a);
+}
+
+match(s)
+char *s;
+{
+	char *p1;
+	int c;
+
+	p1 = sbufp;
+	while((c = *s++) != '\0')
+		if(*p1++ != c) return(0);
+	sbufp = p1;
+	return(1);
+}
+
+done()
+{
+	int *p;
+
+	if(rept() > 3) {
+		printf("Draw by repetition\n");
+		onhup();
+	}
+	p = lmp;
+	mantom? bagen(): wagen();
+	if(p == lmp) {
+		if(check())
+			if(mantom)
+				printf("White wins\n"); else
+				printf("Black wins\n"); else
+		printf("Stale mate\n");
+		onhup();
+	}
+	return(p);
+}
+
+xplay()
+{
+	int a;
+
+	abmove = 0;
+	a = mantom? bplay(): wplay();
+	ivalue = a;
+	return(a);
+}
+
+term()
+{
+	int p[2];
+
+	if(bookp)
+		exit();
+	mfmt = 0;
+	pipe(p);
+	if(fork()) {
+		close(1);
+		dup(p[1]);
+		close(2);
+		score();
+		exit();
+	}
+	close(0);
+	dup(p[0]);
+	close(p[1]);
+	execl("/bin/mail", "mail", "chess", 0);
+	execl("/usr/bin/mail", "mail", "chess", 0);
+	exit();
+}
+-- /usr/ken/chess/qsort.s mode=0100644 uid=6 gid=1 atime=173637328 mtime=173637328 --
+/ qsort interfact to c
+
+/	qsort(from, to)
+
+.globl	_qsort
+_qsort:
+	mov	2(sp),r1
+	mov	4(sp),r2
+	jsr	pc,qsort
+	rts	pc
+
+
+qsort:
+	mov	r2,r3
+	sub	r1,r3
+	cmp	r3,$4
+	ble	done
+	asr	r3
+	bic	$3,r3
+	add	r1,r3
+	mov	r1,-(sp)
+	mov	r2,-(sp)
+
+loop:
+	cmp	r1,r3
+	bhis	loop1
+	cmp	(r1),(r3)
+	bgt	loop1
+	add	$4,r1
+	br	loop
+
+loop1:
+	cmp	r2,r3
+	blos	1f
+	sub	$4,r2
+	mov	r2,r0
+	cmp	(r0),(r3)
+	bge	loop1
+
+	mov	(r1),r0
+	mov	(r2),(r1)+
+	mov	r0,(r2)+
+	mov	(r1),r0
+	mov	(r2),(r1)
+	mov	r0,(r2)
+	cmp	-(r1),-(r2)
+	cmp	r1,r3
+	bne	loop
+	mov	r2,r3
+	br	loop
+
+1:
+	cmp	r1,r3
+	beq	1f
+	mov	(r1),r0
+	mov	(r2),(r1)+
+	mov	r0,(r2)+
+	mov	(r1),r0
+	mov	(r2),(r1)
+	mov	r0,(r2)
+	cmp	-(r1),-(r2)
+	mov	r1,r3
+	br	loop1
+
+1:
+	mov	(sp)+,r2
+	mov	r3,-(sp)
+	mov	r3,r1
+	add	$4,r1
+	jsr	pc,qsort
+	mov	(sp)+,r2
+	mov	(sp)+,r1
+	br	qsort
+
+done:
+	rts	pc
+
+	rti = 2
+
+/	itinit()
+
+.globl	_itinit
+.globl	_intrp, _term
+signal = 48.
+
+_itinit:
+	sys	signal; 1; 1
+	bit	$1,r0
+	bne	1f
+	sys	signal; 1; _onhup
+1:
+	sys	signal; 2; 1
+	bit	$1,r0
+	bne	1f
+	sys	signal; 2; onint
+1:
+	sys	signal; 3; 1
+	rts	pc
+
+.globl	_onhup
+_onhup:
+	sys	signal; 1; 1
+	sys	signal; 2; 1
+	sys	signal; 3; 1
+	jmp	_term
+
+onint:
+	mov	r0,-(sp)
+	sys	signal; 2; onint
+	clr	r0
+	sys	seek; 0; 2
+	mov	2(sp),r0
+	inc	_intrp
+	mov	(sp)+,r0
+	rti
+
+/	t = clock()
+
+.globl	_clock
+_clock:
+	sys	time
+	mov	r0,-(sp)
+	mov	r1,-(sp)
+	sub	t+2,r1
+	sbc	r0
+	sub	t,r0
+	mov	r1,r0
+	mov	(sp)+,t+2
+	mov	(sp)+,t
+	rts	pc
+
+.bss
+t:	.=.+4
+-- /usr/ken/chess/rc mode=0100644 uid=6 gid=1 atime=173637329 mtime=173637329 --
+cc -c -O agen.c
+as att.s; mv a.out att.o
+as bgen.s; mv a.out bgen.o
+cc -c -O bheur.c
+as bmove.s; mv a.out bmove.o
+cc -c -O book.c
+cc -c -O bplay.c
+as ctrl.s; mv a.out ctrl.o
+cc -c -O data.c
+cc -c -O init.c
+cc -c -O io.c
+cc -c -O mater.c
+cc -c -O pio.c
+cc -c -O play.c
+as qsort.s; mv a.out qsort.o
+cc -c -O savres.c
+cc -c -O stat.c
+cc -c -O stdin.c
+as wgen.s; mv a.out wgen.o
+cc -c -O wheur.c
+as wmove.s; mv a.out wmove.o
+cc -c -O wplay.c
+-- /usr/ken/chess/savres.c mode=0100644 uid=6 gid=1 atime=173637331 mtime=173637331 --
+#include "old.h"
+
+save()
+{
+	int i;
+	register f;
+
+	f = creat("chess.out", 0666);
+	if(f < 0) {
+		printf("cannot create file\n");
+		return;
+	}
+	write(f, clktim, 4);
+	write(f, &bookp, 2);
+	write(f, &moveno, 2);
+	write(f, &game, 2);
+	i = amp-ambuf;
+	write(f, &i, 2);
+	write(f, &mantom, 2);
+	write(f, &value, 2);
+	write(f, &ivalue, 2);
+	write(f, &depth, 2);
+	write(f, &flag, 2);
+	write(f, &eppos, 2);
+	write(f, &bkpos, 2);
+	write(f, &wkpos, 2);
+	write(f, board, 128);
+	write(f, ambuf, i*2);
+	close(f);
+}
+
+restore()
+{
+	int i;
+	register f;
+
+	f = open("chess.out", 0);
+	if(f < 0) {
+		printf("cannot open file\n");
+		return;
+	}
+	read(f, clktim, 4);
+	read(f, &bookp, 2);
+	read(f, &moveno, 2);
+	read(f, &game, 2);
+	read(f, &i, 2);
+	amp = ambuf+i;
+	read(f, &mantom, 2);
+	read(f, &value, 2);
+	read(f, &ivalue, 2);
+	read(f, &depth, 2);
+	read(f, &flag, 2);
+	read(f, &eppos, 2);
+	read(f, &bkpos, 2);
+	read(f, &wkpos, 2);
+	read(f, board, 128);
+	read(f, ambuf, i*2);
+	close(f);
+}
+-- /usr/ken/chess/stat.c mode=0100644 uid=6 gid=1 atime=173637333 mtime=173637333 --
+#include "old.h"
+
+statl()
+{
+	int *p1, *p2, *p3;
+
+	p1 = p2 = lmp;
+	stage();
+	mantom? bagen(): wagen();
+	if(lmp == p1+1)
+		return(p1);
+	while(p2 != lmp) {
+		p3 = p2++;
+		if(mantom) {
+			bmove(*p2++);
+			*p3 = bstatic();
+			bremove();
+		} else {
+			wmove(*p2++);
+			*p3 = wstatic();
+			wremove();
+		}
+	}
+	qsort(p1, lmp);
+	return(p1);
+}
+
+wstatic()
+{
+	int i, j, h, (*p)();
+
+	h = i = 0;
+	while(p = wheur[h++]) {
+		j = (*p)();
+		i =+ j;
+	}
+	return(-i);
+}
+
+bstatic()
+{
+	int i, j, h, (*p)();
+
+	h = i = 0;
+	while(p = bheur[h++]) {
+		j = (*p)();
+		i =+ j;
+	}
+	return(-i);
+}
+
+xheur(ploc)
+int ploc;
+{
+	int *p1, *p2, from, to, pie;
+
+	pie = board[ploc];
+	p1 = lmp;
+	p2 = p1;
+	mantom? wgen(): bgen();
+	while(p2 != lmp) {
+		p2++;
+		to = *p2++ & 0377;
+		if(to == ploc) {
+			from = p2[-1] >> 8;
+			if(abs(board[from]) < abs(pie)) {
+				lmp = p1;
+				return((pval+6)[pie]/60);
+			}
+		}
+	}
+	lmp = p1;
+	return(0);
+}
+
+srnd(p)
+int p;
+{
+
+	srnd1(p, uleft, -9);
+	srnd1(p, uright, -7);
+	srnd1(p, dleft, 7);
+	srnd1(p, dright, 9);
+	srnd1(p, up, -8);
+	srnd1(p, left, -1);
+	srnd1(p, right, 1);
+	srnd1(p, down, 8);
+	srnd1(p, 0, 0);
+}
+
+srnd1(p, m, o)
+int p, m, o;
+{
+
+	if((dir[p]&m) == 0)
+		control[p+o] =+ 10;
+}
+-- /usr/ken/chess/stdin.c mode=0100644 uid=6 gid=1 atime=173637334 mtime=173637334 --
+#include "old.h"
+
+stdin()
+{
+	int piece1, piece2, side1, side2, rnk1, rnk2, file1, file2;
+	int ckf, c, *p1, *p2, to, piece;
+	int ckm, ckamb, nckm, nckamb;
+
+	piece1 = piece2 = side1 = side2 = -1;
+	rnk1 = rnk2 = file1 = file2  = -1;
+	ckf = 0;
+	if(match("o-o-o")||match("ooo")) {
+		piece1 = 6;
+		file1 = 3;
+		side1 = 1;
+		file2 = 2;
+		side2 = 0;
+		goto search;
+	}
+	if(match("o-o")||match("oo")) {
+		piece1 = 6;
+		file1 = 3;
+		file2 = 1;
+		goto search;
+	}
+	stdpin(&piece1, &side1, &rnk1, &file1);
+	c = *sbufp++;
+	if(c=='*' || c=='x')
+		stdpin(&piece2, &side2, &rnk2, &file2); else
+	if(c == '-')
+		stdbin(&side2, &rnk2, &file2); else
+		sbufp--;
+
+search:
+	c = *sbufp++;
+	if(c == '+') {
+		ckf = 1;
+		c = *sbufp++;
+	}
+	if(c != '\0')
+		return(0);
+
+	p1 = p2 = lmp;
+	mantom? bagen(): wagen();
+	ckm = nckm = -1;
+	ckamb = nckamb = 0;
+	while(p1 != lmp) {
+		p1++;
+		piece = board[*p1>>8];
+		mantom? bmove(*p1): wmove(*p1);
+		to = amp[-3];
+		if(pcomp(piece, amp[-4],
+			piece1, side1, rnk1, file1))
+		if(pcomp(amp[-2], to,
+			piece2, side2, rnk2, file2))
+		if(comp(ckf, check())) {
+			if(ckm >= 0)
+				ckamb++;
+			ckm = *p1;
+		} else {
+			if(nckm >= 0)
+				nckamb++;
+			nckm = *p1;
+		}
+		p1++;
+		mantom? bremove(): wremove();
+	}
+	lmp = p2;
+	if(ckamb || (nckamb && ckm < 0)) {
+		printf("ambiguous\n");
+		return(-1);
+	}
+	if(ckm < 0)
+		return(nckm);
+	return(ckm);
+}
+
+stdpin(ap, as, ar, af)
+int *ap, *as, *ar, *af;
+{
+	int c;
+
+	c = *sbufp++;
+	if(c == 'q') {
+		*as = 0;
+		stdpin(ap, as, ar, af);
+		return;
+	}
+	if(c == 'k') {
+		*as = 1;
+		stdpin(ap, as, ar, af);
+		return;
+	}
+	if(c == 'p') {
+		*ap = 1;
+		if(*as >= 0)
+			*af = 3;
+		goto loc;
+	}
+	if(c == 'n') {
+		*ap = 2;
+		goto pie;
+	}
+	if(c == 'b') {
+		*ap = 3;
+		goto pie;
+	}
+	if(c == 'r') {
+		*ap = 4;
+		goto pie;
+	}
+	sbufp--;
+	goto loc;
+
+pie:
+	if(*sbufp == 'p') {
+		*af = (*ap-1)%3;
+		*ap = 1;
+		sbufp++;
+	}
+
+loc:
+	if(*ap<0 && *as>=0) {
+		*ap = *as+5;
+		*as = -1;
+	}
+	if(*sbufp == '/') {
+		sbufp++;
+		stdbin(as, ar, af);
+	}
+}
+
+stdbin(as, ar, af)
+int *as, *ar, *af;
+{
+	int c;
+
+loop:
+	c = *sbufp++;
+	if(c == 'q') {
+		*as = 0;
+		goto kq;
+	}
+	if(c == 'k') {
+		*as = 1;
+	kq:
+		stdbin(as, ar, af);
+		if(*af < 0)
+			*af = 3;
+		return;
+	}
+
+	if(c == 'r') {
+		*af = 0;
+		goto loop;
+	}
+	if(c == 'n') {
+		*af = 1;
+		goto loop;
+	}
+	if(c == 'b') {
+		*af = 2;
+		goto loop;
+	}
+	if(c>'0' && c<'9')
+		*ar = c-'1'; else
+		sbufp--;
+}
+
+pcomp(p, l, pp, sp, rp, fp)
+int p, l, pp, sp, rp, fp;
+{
+	int r, f, s;
+
+	f = l%8;
+	r = l/8;
+	if(!mantom)
+		r = 7-r;
+	if(f > 3) {
+		f = 7-f;
+		s = 1;
+	} else
+		s = 0;
+
+	if(comp(pp, p))
+	if(comp(sp, s))
+	if(comp(rp, r))
+	if(comp(fp, f))
+		return(1);
+	return(0);
+}
+
+comp(p, v)
+int p, v;
+{
+
+	if(p < 0) return(1);
+	return(p == abs(v));
+}
+
+abs(x)
+int x;
+{
+
+	if(x < 0)
+		return(-x);
+	return(x);
+}
+-- /usr/ken/chess/wgen.s mode=0100644 uid=6 gid=1 atime=173637336 mtime=173637336 --
+/ generate moves
+
+.globl	_wgen
+
+.globl	_pval, _board, _dir
+.globl	_flag, _lmp, _wkpos
+.globl	_eppos
+.globl	_value
+
+uleft	= 04040
+uright	= 04004
+dleft	= 00440
+dright	= 00404
+left	= 00040
+right	= 00004
+up	= 04000
+down	= 00400
+u2r1	= 06004
+u1r2	= 04006
+d1r2	= 00406
+d2r1	= 00604
+d2l1	= 00640
+d1l2	= 00460
+u1l2	= 04060
+u2l1	= 06040
+rank2	= 00200
+rank7	= 02000
+
+_wgen:
+	mov	$_dir+126.,r4
+	mov	$_board+126.,r3
+	mov	_lmp,r2
+	mov	$63.,r1
+0:
+	mov	(r3),r0
+	bge	1f
+	asl	r0
+	jmp	*2f(r0)
+
+	king
+	queen
+	rook
+	bishop
+	knight
+	pawn
+2:
+
+pawn:
+	bit	$uleft,(r4)
+	bne	2f
+	tst	-2*9.(r3)
+	ble	3f
+	jsr	r5,wtry; 0; -9.*2
+3:
+	mov	r1,r0
+	sub	$9,r0
+	cmp	r0,_eppos
+	bne	2f
+	jsr	r5,wtry; 0; -1*2
+2:
+	bit	$uright,(r4)
+	bne	2f
+	tst	-7.*2(r3)
+	ble	3f
+	jsr	r5,wtry; 0; -7.*2
+3:
+	mov	r1,r0
+	sub	$7,r0
+	cmp	r0,_eppos
+	bne	2f
+	jsr	r5,wtry; 0; 2*1
+2:
+	tst	-2*8.(r3)
+	bne	1f
+	jsr	r5,wtry; 0; -2*8.
+	bit	$rank2,(r4)
+	beq	1f
+	tst	-2*16.(r3)
+	bne	1f
+	jsr	r5,wtry; 0; -16.*2
+	br	1f
+
+knight:
+	jsr	r5,wtry; u2r1; -15.*2
+	jsr	r5,wtry; u1r2; -6.*2
+	jsr	r5,wtry; d1r2; 10.*2
+	jsr	r5,wtry; d2r1; 17.*2
+	jsr	r5,wtry; d2l1; 15.*2
+	jsr	r5,wtry; d1l2; 6.*2
+	jsr	r5,wtry; u1l2; -10.*2
+	jsr	r5,wtry; u2l1; -17.*2
+	br	1f
+
+
+1:
+	cmp	-(r4),-(r3)
+	dec	r1
+	bpl	0b
+	mov	r2,_lmp
+	rts	pc
+
+bishop:
+	jsr	r5,wslide; uleft; -9.*2
+	jsr	r5,wslide; uright; -7.*2
+	jsr	r5,wslide; dleft; 7.*2
+	jsr	r5,wslide; dright; 9.*2
+	br	1b
+
+rook:
+	jsr	r5,wslide; up; -8.*2
+	jsr	r5,wslide; down; 8.*2
+	jsr	r5,wslide; left; -1.*2.
+	jsr	r5,wslide; right; 1.*2
+	br	1b
+queen:
+	jsr	r5,wslide; uleft; -9.*2
+	jsr	r5,wslide; uright; -7.*2
+	jsr	r5,wslide; dleft; 7.*2
+	jsr	r5,wslide; dright; 9.*2
+	jsr	r5,wslide; up; -8.*2
+	jsr	r5,wslide; left; -1.*2
+	jsr	r5,wslide; right; 1.*2
+	jsr	r5,wslide; down; 8.*2
+	br	1b
+
+king:
+	jsr	r5,wtry; uleft; -9.*2
+	jsr	r5,wtry; uright; -7.*2
+	jsr	r5,wtry; dleft; 7.*2
+	jsr	r5,wtry; dright; 9.*2
+	jsr	r5,wtry; up; -8.*2
+	jsr	r5,wtry; left; -1.*2
+	jsr	r5,wtry; right; 1.*2
+	jsr	r5,wtry; down; 8.*2
+	br	1b
+
+wtry:
+	bit	(r5)+,(r4)
+	bne	1f
+	mov	r3,r0
+	add	(r5),r0
+	mov	(r0),r0
+	blt	1f
+	asl	r0
+	mov	_value,(r2)
+	sub	_pval+12.(r0),(r2)+
+	mov	(r5)+,r0
+	asr	r0
+	add	r1,r0
+	movb	r0,(r2)+
+	movb	r1,(r2)+
+	rts	r5
+1:
+	tst	(r5)+
+	rts	r5
+
+wslide:
+	mov	r4,-(sp)
+	mov	r3,-(sp)
+1:
+	bit	(r5)+,(r4)
+	bne	1f
+	add	(r5),r3
+	add	(r5),r4
+	mov	(r3),r0
+	blt	1f
+	bgt	2f
+	mov	_value,(r2)+
+	mov	r3,r0
+	sub	$_board,r0
+	asr	r0
+	movb	r0,(r2)+
+	movb	r1,(r2)+
+	tst	-(r5)
+	br	1b
+2:
+	asl	r0
+	mov	_value,(r2)
+	sub	_pval+12.(r0),(r2)+
+	mov	r3,r0
+	sub	$_board,r0
+	asr	r0
+	movb	r0,(r2)+
+	movb	r1,(r2)+
+1:
+	tst	(r5)+
+	mov	(sp)+,r3
+	mov	(sp)+,r4
+	rts	r5
+-- /usr/ken/chess/wheur.c mode=0100644 uid=6 gid=1 atime=173637337 mtime=173637337 --
+#include "old.h"
+
+/*
+ *	mobility
+ *	1 for each potential move
+ */
+
+wheur1()
+{
+	int *p1, *p2, *p3, i;
+
+	p1 = lmp;
+	wgen();
+	p2 = lmp;
+	lmp = p1;
+	bgen();
+	p3 = lmp;
+	lmp = p1;
+	i = p2-p3;
+	i =>> 1;
+	return(i);
+}
+
+/*
+ *	opening 'goodies'
+ */
+
+wheur2()
+{
+	int i;
+
+	i = 0;
+	if(game > 2) return(i);
+	/*
+	 * minor pieces out
+	 * knights before bishops
+	 */
+	i =+ 9*((board[57] != -2)+
+		(board[62] != -2));
+	i =+ 8*((board[58] != -3)+
+		(board[61] != -3));
+	/*
+	 * blocked central pawns
+	 */
+	if(board[51] == -1 && board[51-8]!=0) i =- 10;
+	if(board[52] == -1 && board[52-8]!=0) i =- 10;
+	return(i);
+}
+
+/*
+ *	castle
+ */
+
+wheur3()
+{
+	int i;
+
+	i = 0;
+	/*
+	 * queenside ability
+	 */
+	if(flag&02 && board[48]== -1 && board[49]== -1 && board[50]== -1)
+		i =+ 20;
+	/*
+	 *  kingside ability
+	 */
+	if(flag&01 && board[53]== -1 && board[54]== -1 && board[55]== -1)
+		i =+ 20;
+	/*
+	 * if both
+	 */
+	if(i == 40)
+		i = 22;
+	/*
+	 * if castled,
+	 * keep pawns in
+	 */
+	if(wkpos==58)
+		if(board[50]== -1 && (board[48]== -1 || board[48-8]== -1) &&
+			(board[49]== -1 || board[49-8]== -1))
+				i =+ 40;
+	if(wkpos==62)
+		if(board[53]== -1 && (board[54]== -1 || board[54-8]== -1) &&
+			(board[55]== -1 || board[55-8]== -1))
+				i =+ 40;
+	return(i);
+}
+
+/*
+ *	prance
+ *	a percentage if the
+ *	piece on the move
+ *	can be driven back
+ *	by a smaller piece
+ */
+
+wheur4()
+{
+	int *p1, *p2, ploc, i;
+
+	if(amp[-1] != 1) return(0);
+	ploc = amp[-3];
+	if(board[ploc] == -1) return(0);
+	if(xheur(ploc)) return(0);
+	p1 = lmp;
+	p2 = p1;
+	bagen();
+	i = 0;
+	while(p2 != lmp) {
+		p2++;
+		bmove(*p2++);
+		i = xheur(ploc);
+		bremove();
+		if(i)
+			break;
+	}
+	lmp = p1;
+	return(i);
+}
+
+/*
+ *	control
+ *	center control
+ *		opening
+ *		beginning
+ *	king control
+ *		middle
+ *		end
+ */
+
+wheur5()
+{
+	int i, j, k, s, n, d;
+
+	i = 64;
+	while(i--)
+		control[i] = 0;
+	if(game < 2) {
+		i = 64;
+		while(i--)
+			control[i] =+ center[i];
+	}
+	if(mantom) {
+		if((flag&03)==0)
+			srnd(wkpos);
+	} else {
+		if((flag&030)==0)
+			srnd(bkpos);
+	}
+	i = 64;
+	s = 0;
+	while(i--) {
+		n = control[i]*100;
+		attack(i);
+		j = 0;
+		while(k = attacv[j++]) {
+			d = (pval+6)[k];
+			if(d < 0)
+				s =- n/(-d); else
+				s =+ n/d;
+		}
+	}
+	return(-s);
+}
+-- /usr/ken/chess/wmove.s mode=0100644 uid=6 gid=1 atime=173637339 mtime=173637339 --
+.globl	_wmove, _wremove
+.globl	_board, _pval, _amp, _flag, _eppos, _value, _wkpos
+.globl	_game
+
+_wmove:
+	mov	_amp,r4
+	movb	2(sp),r3		/ to
+	movb	3(sp),r2		/ from
+	mov	_value,(r4)+
+	mov	_flag,(r4)+
+	mov	_eppos,(r4)+
+	mov	r2,(r4)+
+	mov	r3,(r4)+
+	asl	r2			/ from as a word index
+	asl	r3			/ to as word index
+	mov	_board(r3),r0
+	mov	r0,(r4)+
+	beq	1f
+	asl	r0
+	sub	_pval+12.(r0),_value
+	cmp	r0,$2
+	bne	1f
+	cmp	r3,$40.*2
+	blt	1f
+	sub	$25.,_value
+	cmp	r3,$48.*2
+	blt	1f
+	sub	$50.,_value
+1:
+	mov	_board(r2),r0
+	mov	r0,_board(r3)
+	clr	_board(r2)
+	mov	$-1,_eppos
+	asl	r0
+	bge	error
+	jmp	*0f(r0)		/ type of man
+	kmove
+	qmove
+	rmove
+	bmove
+	nmove
+	pmove
+0:
+error:
+	3
+
+
+pmove:
+	sub	r3,r2
+	bge	1f
+	neg	r2
+1:
+	cmp	r2,$2*1			/ ep capture
+	bne	1f
+	clr	_board(r3)
+	mov	$-1,_board-16.(r3)
+	mov	$4,(r4)+
+	mov	r4,_amp
+	rts	pc
+1:
+	cmp	r2,$2*16.		/ double move
+	bne	1f
+	movb	3(sp),r2
+	sub	$8,r2
+	mov	r2,_eppos
+	br	move
+1:
+	cmp	r3,$24.*2
+	bge	move
+	sub	$25.,_value
+	cmp	r3,$16.*2
+	bge	move
+	sub	$50.,_value
+	cmp	r3,$8.*2		/ queen promotion
+	bge	move
+	sub	$625.,_value
+	mov	$-5,_board(r3)
+	mov	$5,(r4)+
+	mov	r4,_amp
+	rts	pc
+
+rmove:
+	cmp	r2,$2*63.
+	bne	1f
+	bic	$1,_flag
+	br	move
+1:
+	cmp	r2,$2*56.
+	bne	move
+	bic	$2,_flag
+	br	move
+
+kmove:
+	asr	r3
+	mov	r3,_wkpos
+	bic	$3,_flag
+	cmp	r2,$2*60.
+	bne	2f
+	cmp	r3,$62.			/ kingside castle
+	bne	1f
+	dec	_value
+	mov	$-4,_board+[2*61.]
+	clr	_board+[2*63.]
+	mov	$2,(r4)+
+	mov	r4,_amp
+	rts	pc
+1:
+	cmp	r3,$58.			/ queenside castle
+	bne	2f
+	dec	_value
+	mov	$-4,_board+[2*59.]
+	clr	_board+[2*56.]
+	mov	$3,(r4)+
+	mov	r4,_amp
+	rts	pc
+2:					/ king move
+	tst	_game
+	bne	1f
+	add	$2,_value
+1:
+	clr	(r4)+
+	mov	r4,_amp
+	rts	pc
+
+qmove:
+	tst	_game
+	bne	move
+	inc	_value
+	br	move
+
+nmove:
+bmove:
+move:
+	mov	$1,(r4)+
+	mov	r4,_amp
+	rts	pc
+
+_wremove:
+	mov	_amp,r4
+	mov	-(r4),r0
+	mov	-(r4),r1
+	mov	-(r4),r3
+	mov	-(r4),r2
+	mov	-(r4),_eppos
+	mov	-(r4),_flag
+	mov	-(r4),_value
+	mov	r4,_amp
+	asl	r2
+	asl	r3
+	mov	_board(r3),_board(r2)
+	mov	r1,_board(r3)
+	asl	r0
+	jmp	*0f(r0)
+0:
+	movek
+	movex
+	moveo
+	moveoo
+	movep
+	moveq
+
+movek:
+	asr	r2
+	mov	r2,_wkpos
+
+movex:
+	rts	pc
+
+moveo:
+	mov	$-4,_board+[2*63.]
+	clr	_board+[2*61.]
+	mov	$60.,_wkpos
+	rts	pc
+
+moveoo:
+	mov	$-4,_board+[2*56.]
+	clr	_board+[2*59.]
+	mov	$60.,_wkpos;
+	rts	pc
+
+movep:
+	mov	$-1,_board(r2)
+	clr	_board-[2*8.](r3)
+	rts	pc
+
+moveq:
+	mov	$-1,_board(r2)
+	rts	pc
+-- /usr/ken/chess/wplay.c mode=0100644 uid=6 gid=1 atime=173637340 mtime=173637340 --
+#include "old.h"
+
+wplay()
+{
+	int v1, v2, *p1, *p2, *p3, ab;
+
+	if(value < ivalue)
+		ivalue = value;
+	ab = 0;
+	v1 = 3000;
+	ply = 0;
+	p1 = statl();
+	if(lmp == p1+2) {
+		abmove = p1[1];
+		lmp = p1;
+		return(ivalue);
+	}
+	p2 = p1;
+	mantom = !mantom;
+	while(p2 != lmp) {
+		p2++;
+		wmove(*p2);
+		if(rept())
+			v2 = 0; else
+			v2 = bplay1(v1);
+		if(v2 < v1 && !mate(3, 0)) {
+			ab = *p2;
+			v1 = v2;
+		}
+		wremove();
+		p2++;
+	}
+	if(ab == 0 && lmp != p1)
+		ab = p1[1];
+	mantom = !mantom;
+	lmp = p1;
+	abmove = ab;
+	return(v1);
+}
+
+wplay1(ab)
+int ab;
+{
+	int v1, v2, *p1, *p2;
+
+	if(ply >= depth)
+		return(wquies(ab));
+	ply++;
+	p1 = p2 = lmp;
+	wgen();
+	qsort(p1, lmp);
+	v1 = 3000;
+	while(p2 != lmp) {
+		if(intrp)
+			goto out;
+		p2++;
+		wmove(*p2);
+		if(battack(wkpos)) {
+			v2 = bplay1(v1);
+			if(v2 < v1)
+				v1 = v2;
+		}
+		wremove();
+		if(v1 <= ab)
+			goto out;
+		p2++;
+	}
+out:
+	ply--;
+	lmp = p1;
+	if(v1 == 3000) {
+		v1--;
+		if(!check())
+			v1 = 0;
+	}
+	return(v1);
+}
+
+wquies(ab)
+int ab;
+{
+	int *p1, *p2, *p3, v1, v2;
+
+	if(ply >= qdepth)
+		return(ivalue);
+	p1 = p2 = p3 = lmp;
+	wgen();
+	while(p2 != lmp) {
+		v1 = *p2++;
+		if(v1 != value && v1 <= ivalue+50) {
+			*p3++ = (((pval+6)[board[*p2>>8]]/100)<<8) |
+				(-(pval+6)[board[*p2&0377]]/100);
+			*p3++ = *p2;
+		}
+		p2++;
+	}
+	if(p3 == p1) {
+		lmp = p1;
+		return(value);
+	}
+	ply++;
+	qsort(p1, p3);
+	lmp = p3;
+	p2 = p1;
+	v1 = value;
+	while(p2 != lmp) {
+		p2++;
+		wmove(*p2);
+		if(battack(wkpos)) {
+			v2 = bquies(v1);
+		} else
+			v2 = 3000;
+		if(v2 < v1)
+			v1 = v2;
+		wremove();
+		if(v1 <= ab)
+			goto out;
+		p2++;
+	}
+out:
+	ply--;
+	lmp = p1;
+	return(v1);
+}
