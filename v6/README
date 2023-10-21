@@ -1,0 +1,10 @@
+These files are the Research Unix Sixth Edition distribution, downloaded from
+https://www.tuhs.org/Archive/Distributions/Research/Dennis_v6/.
+They are distributed under the terms of the license posted at
+https://www.tuhs.org/Archive/Caldera-license.pdf and
+reproduced in LICENSE.pdf and LICENSE.txt.
+
+Additional files have been added to the file system in the running system,
+in /usr/dmr and /usr/ken from parts of the TUHS archive:
+https://www.tuhs.org/Archive/Applications/Dennis_Tapes/
+
