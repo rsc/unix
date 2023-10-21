@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Unix Sixth Edition (WASM)</title>
+  <link href="https://research.swtch.com/fonts/source-serif/source-serif-text.css" rel="stylesheet">
+  <link href="https://research.swtch.com/fonts/source-code-pro/source-code-pro.css" rel="stylesheet">
+  <script src="wasm_exec.js"></script>
+  <script type="text/javascript">
+function fetchAndInstantiate(url, importObject) {
+  return fetch(url).then(response =>
+    response.arrayBuffer()
+  ).then(bytes =>
+    WebAssembly.instantiate(bytes, importObject)
+  ).then(results =>
+      results.instance
+  );
+}
+var go = new Go();
+var mod = fetchAndInstantiate("main.wasm", go.importObject);
+window.onload = function() {
+  mod.then(function(instance) {
+    go.run(instance);
+  });
+};
+  </script>
+  <style>
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Source Serif 4';
+  }
+  #input {
+    outline: none;
+  }
+  #controls {
+  }
+  #output {
+    width: 100%;
+    outline: none;
+  }
+  #img-output {
+    width: 250px;
+    height: 100%;
+  }
+  #help {
+    font-size: 80%;
+  }
+  #about {
+    margin-top: 2em;
+    width: 40em;
+  }
+  #tty0, #tty1, #tty2, #tty3, #tty4, #tty5, #tty6, #tty7 {
+    display: none;
+  }
+  .selected {
+    background-color: blue;
+    color: white;
+  }
+  h1 {
+    text-align: left !important;
+    font-size: 140%;
+  }
+  code, pre {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 100%;
+  }
+  #input {
+    position: absolute;
+    left: -1000px;
+    top: 0px;
+  }
+  </style>
+</head>
+<body>
+<h1>Research Unix Sixth Edition (WASM)</h1>
+
+<input type="text" id="input"></input>
+<pre><div id="ttyall"><div id="tty0"><b>tty0</b>
+</div><div id="tty1"><b>tty1</b>
+</div><div id="tty2"><b>tty2</b>
+</div><div id="tty3"><b>tty3</b><!--
+ </div><div id="tty4"><b>tty4</b>
+</div><div id="tty5"><b>tty5</b>
+</div><div id="tty6"><b>tty6</b>
+</div><div id="tty7"><b>tty7</b>-->
+</div><div id="tty8"><b>tty8</b>
+</div></div>
+
+<div id="bottom"></div></div></pre>
+<button id="btty0">tty0</button>
+<button id="btty1">tty1</button>
+<button id="btty2">tty2</button>
+<button id="btty3">tty3</button><!--
+<button id="btty4">tty4</button>
+<button id="btty5">tty5</button>
+<button id="btty6">tty6</button>
+<button id="btty7">tty7</button>-->
+<button id="btty8">tty8</button>
+
+<div id="about">
+<p>
+This web page runs a Go port of <br>
+the Research Unix Sixth Edition kernel,<br>
+running user-mode code in a simulated <br>
+PDP11 CPU, all compiled to WebAssembly, <br>
+executed in your browser.
+</p>
+<p>
+A few accounts are root, dmr, and ken.<br>
+The password is the username.<br>
+Have fun poking around.
+</p>
+<p><code>cd</code> is spelled <code>chdir</code>.</p>
+<p>Erase is #, and line kill is @. <br>
+    As a convenience to 21st century users, <br>
+    typing backspace and ^U generate these.</p>
+
+<p>Echoed terminal input appears in bold.</p>
+
+<p>The simulator runs in the browser UI thread,<br>
+so long computations block the browser UI.
+</p>
+
+<p>On mobile devices, clicking a tty button<br>
+should bring up the keyboard, <br>
+but scrolling to the output point seems broken. <br>
+Patches welcome.
+</p>
+
+</div>
+</body>
+</html>
