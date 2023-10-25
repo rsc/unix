@@ -1,0 +1,3 @@
+#!/bin/sh
+
+gsutil cp index.html main.wasm wasm_exec.js gs://swtch/www-blog/v6/
