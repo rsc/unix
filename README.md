@@ -11,5 +11,5 @@ rsc.io/unix holds programs for running old Unix programs on modern computers.
 	go generate
 	go run serve.go
 
-That will serve a web version at http://localhost:8080/.
-
+That will serve a web version at localhost:8080.
+There is a copy running at <https://research.swtch.com/v6/>.
