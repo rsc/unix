@@ -6,7 +6,7 @@
 // The original namei is too complex and hard to follow,
 // and our in-memory form does not need any of the complications.
 
-package unix
+package v6unix
 
 import (
 	"unsafe"

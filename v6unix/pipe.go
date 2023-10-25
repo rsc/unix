@@ -10,7 +10,7 @@
 
 // TODO: The handling of signals and sleeps might not be right.
 
-package unix
+package v6unix
 
 import "sync"
 

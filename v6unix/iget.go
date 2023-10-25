@@ -5,7 +5,7 @@
 // Analogous to _fs/usr/sys/ken/iget.c but the code is new
 // since there is no on-disk form, nor inode locking.
 
-package unix
+package v6unix
 
 func (p *Proc) iget(inum uint16) *inode {
 	d := p.Sys.Disk

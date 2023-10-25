@@ -10,7 +10,7 @@
 
 // TODO: TTY output processing
 
-package unix
+package v6unix
 
 import (
 	"bytes"
@@ -260,11 +260,113 @@ func (ttydev) write(p *Proc, minor uint8, b []byte, off int) int {
 		p.Error = EIO
 		return 0
 	}
-	n, errno := tty.Print(b, false)
+	var out []byte
+	for _, c := range b {
+		out = tty.output(out, c)
+	}
+
+	_, errno := tty.Print(out, false)
 	if errno != 0 {
 		p.Error = errno
 	}
-	return n
+	return len(b)
+}
+
+func (t *TTY) output(dst []byte, c byte) []byte {
+	// v6 drops ^D to avoid hanging up certain terminals; okay now.
+
+	/*
+	 * Turn tabs to spaces as required
+	 */
+	if c == '\t' && t.flags&XTABS != 0 {
+		dst = t.output(dst, ' ')
+		for t.col&07 != 0 {
+			dst = t.output(dst, ' ')
+		}
+		return dst
+	}
+
+	/*
+	 * for upper-case-only terminals,
+	 * generate escapes.
+	 */
+	if t.flags&LCASE != 0 {
+		colp := "({)}!|^~'`"
+		for i := 0; i < len(colp); i += 2 {
+			if c == colp[i] {
+				dst = t.output(dst, '\\')
+				c = colp[i+1]
+				break
+			}
+		}
+		if 'a' <= c && c <= 'z' {
+			c -= 'a' - 'A'
+		}
+	}
+
+	/*
+	 * turn <nl> to <cr><lf> if desired.
+	 */
+	if c == '\n' && t.flags&CRMOD != 0 {
+		dst = t.output(dst, '\r')
+	}
+
+	/*
+	 * v6 calculates delays here and updates t.col.
+	 * we only need to update col.
+	 */
+	ctype := partab[c]
+	switch ctype & 0o77 {
+	/* ordinary */
+	case 0:
+		t.col++
+
+	/* non-printing */
+	case 1:
+
+	/* backspace */
+	case 2:
+		if t.col > 0 {
+			t.col--
+		}
+
+	/* newline */
+	case 3:
+		t.col = 0
+
+	/* tab */
+	case 4:
+		t.col |= 07
+		t.col++
+
+	/* vertical motion */
+	case 5:
+
+	/* carriage return */
+	case 6:
+		t.col = 0
+	}
+
+	return append(dst, c)
+}
+
+var partab = [256]byte{
+	0001, 0201, 0201, 0001, 0201, 0001, 0001, 0201,
+	0202, 0004, 0003, 0205, 0005, 0206, 0201, 0001,
+	0201, 0001, 0001, 0201, 0001, 0201, 0201, 0001,
+	0001, 0201, 0201, 0001, 0201, 0001, 0001, 0201,
+	0200, 0000, 0000, 0200, 0000, 0200, 0200, 0000,
+	0000, 0200, 0200, 0000, 0200, 0000, 0000, 0200,
+	0000, 0200, 0200, 0000, 0200, 0000, 0000, 0200,
+	0200, 0000, 0000, 0200, 0000, 0200, 0200, 0000,
+	0200, 0000, 0000, 0200, 0000, 0200, 0200, 0000,
+	0000, 0200, 0200, 0000, 0200, 0000, 0000, 0200,
+	0000, 0200, 0200, 0000, 0200, 0000, 0000, 0200,
+	0200, 0000, 0000, 0200, 0000, 0200, 0200, 0000,
+	0000, 0200, 0200, 0000, 0200, 0000, 0000, 0200,
+	0200, 0000, 0000, 0200, 0000, 0200, 0200, 0000,
+	0200, 0000, 0000, 0200, 0000, 0200, 0200, 0000,
+	0000, 0200, 0200, 0000, 0200, 0000, 0000, 0201,
 }
 
 func (ttydev) close(p *Proc, minor uint8) {

@@ -10,7 +10,7 @@
 
 // TODO interrupts and panics
 
-package unix
+package v6unix
 
 import "runtime"
 

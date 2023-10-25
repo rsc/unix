@@ -8,6 +8,8 @@
 // Use of this source code is governed by a 4-clause BSD-style
 // license that can be found in the LICENSE file.
 
+package v6unix
+
 var sysent [64]sysentry
 
 type sysentry struct {
@@ -84,4 +86,3 @@ func init() {
 		{0, "63", sysnone},                    /* 63 = x */
 	}
 }
-

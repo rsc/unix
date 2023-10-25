@@ -8,7 +8,7 @@
 // Use of this source code is governed by a 4-clause BSD-style
 // license that can be found in the LICENSE file.
 
-package unix
+package v6unix
 
 /*
  * Convert a user supplied
