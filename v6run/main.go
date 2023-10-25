@@ -9,17 +9,40 @@ import (
 	"io"
 	"log"
 	"os"
+	"runtime/pprof"
 	"time"
 
-	v6unix "rsc.io/unix/v6unix"
+	"golang.org/x/term"
+	"rsc.io/unix/v6unix"
 )
 
-var trace = flag.Bool("trace", false, "trace every instruction")
+var (
+	trace      = flag.Bool("trace", false, "trace every instruction")
+	cpuprofile = flag.String("cpuprofile", "", "write cpuprofile to `file`")
+)
 
 func main() {
 	log.SetPrefix("v6run: ")
 	log.SetFlags(0)
 	flag.Parse()
+
+	if *cpuprofile != "" {
+		f, err := os.Create(*cpuprofile)
+		if err != nil {
+			log.Fatal(err)
+		}
+		if err := pprof.StartCPUProfile(f); err != nil {
+			log.Fatal(err)
+		}
+		defer pprof.StopCPUProfile()
+	}
+
+	oldState, err := term.MakeRaw(int(os.Stdin.Fd()))
+	if err != nil {
+		panic(err)
+	}
+	fixup := func() { term.Restore(int(os.Stdin.Fd()), oldState) }
+	defer fixup()
 
 	sys, err := v6unix.NewSystem(v6unix.FS)
 	if err != nil {
@@ -43,6 +66,11 @@ func main() {
 		for {
 			n, err := os.Stdin.Read(buf)
 			for _, c := range buf[:n] {
+				if c == 0x1c {
+					pprof.StopCPUProfile()
+					fixup()
+					os.Exit(0)
+				}
 				input <- c
 			}
 			if err == io.EOF {
