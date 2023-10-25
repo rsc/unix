@@ -5,7 +5,6 @@
 package pdp11
 
 import (
-	"sort"
 	"strings"
 )
 
@@ -157,9 +156,20 @@ var itab = []instr{
 	{0o177400, xldcdf, "ldcdf %f, %a"},
 }
 
+var xtab [1 << 16]uint8
+
+func init() {
+	i := 0
+	for inst := 0; inst < 1<<16; inst++ {
+		if i+1 < len(itab) && inst >= int(itab[i+1].code) {
+			i++
+		}
+		xtab[inst] = uint8(i)
+	}
+}
+
 func lookup(inst uint16) *instr {
-	i := sort.Search(len(itab), func(i int) bool { return itab[i].code > inst }) - 1
-	return &itab[i]
+	return &itab[xtab[inst]]
 }
 
 func lookupAsm(op string) *instr {
