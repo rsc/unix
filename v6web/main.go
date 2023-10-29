@@ -153,7 +153,18 @@ func main() {
 		return nil
 	})
 
+	change := js.FuncOf(func(this js.Value, args []js.Value) any {
+		v := input.Get("value").String()
+		for _, b := range []byte(v) {
+			sys.TTY[curtty].WriteByte(b)
+			wakeup()
+		}
+		input.Set("value", "")
+		return nil
+	})
+
 	input.Call("addEventListener", "keydown", keydown)
+	input.Call("addEventListener", "input", change)
 	input.Call("focus")
 
 	fmt.Printf("started\n")
