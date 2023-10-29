@@ -96,7 +96,12 @@ func main() {
 				button.Get("style").Set("color", "black")
 			}
 		}
-		input.Call("focus")
+
+		input.Call("focus", map[string]any{"preventScroll": true})
+		js.Global().Call("setTimeout", js.FuncOf(func(this js.Value, args []js.Value) any {
+			bottom.Call("scrollIntoView", map[string]any{"block": "end", "inline": "start"})
+			return nil
+		}), 200)
 	}
 	setTTY(8)
 	for _, i := range ttys {

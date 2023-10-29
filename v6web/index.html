@@ -31,7 +31,8 @@ window.onload = function() {
     font-family: 'Minion 3', 'Minion Pro', serif;
   }
   #input {
-    outline: none;
+    opacity: 0;
+    appearance: none;
   }
   #controls {
   }
@@ -65,17 +66,14 @@ window.onload = function() {
     font-family: 'Go83 Mono', monospace;
     font-size: 100%;
   }
-  #input {
-    position: absolute;
-    left: -1000px;
-    top: 0px;
+  #bottom {
+    margin-left: -1em;
   }
   </style>
 </head>
 <body>
 <h1>Research Unix Sixth Edition (WASM)</h1>
 
-<input type="text" id="input"></input>
 <pre><div id="ttyall"><div id="tty0"><b>tty0</b>
 </div><div id="tty1"><b>tty1</b>
 </div><div id="tty2"><b>tty2</b>
@@ -87,7 +85,7 @@ window.onload = function() {
 </div><div id="tty8"><b>tty8</b>
 </div></div>
 
-<div id="bottom"></div></div></pre>
+</div></pre>
 <button id="btty0">tty0</button>
 <button id="btty1">tty1</button>
 <button id="btty2">tty2</button>
@@ -97,7 +95,7 @@ window.onload = function() {
 <button id="btty6">tty6</button>
 <button id="btty7">tty7</button>-->
 <button id="btty8">tty8</button>
-
+<div id="bottom"><input type="text" id="input"></div>
 <div id="about">
 <p>
 This web page runs a Go port of <br>
@@ -123,8 +121,7 @@ so long computations block the browser UI.
 </p>
 
 <p>On mobile devices, clicking a tty button<br>
-should bring up the keyboard, <br>
-but scrolling to the output point seems broken. <br>
+should bring up the keyboard.<br>
 <a href="https://github.com/rsc/unix/">Patches welcome.</a>
 </p>
 
