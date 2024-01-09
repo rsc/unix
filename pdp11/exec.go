@@ -390,6 +390,7 @@ func xsxt(cpu *CPU) {
 	dst := uint16(int16(cpu.PS.N()<<15) >> 15)
 	cpu.writeW(dp, dst)
 	cpu.PS.setNZ(dst)
+	cpu.PS.SetV(false)
 }
 
 // double operand instructions
