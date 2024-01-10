@@ -37,6 +37,8 @@ func (cpu *CPU) Disasm(pc uint16) (asm string, next uint16, err error) {
 			out = fmt.Appendf(out, "%o", next-2*(code&077))
 		case "%n": // emt/trap number
 			out = fmt.Appendf(out, "%o", code&0377)
+		case "%N": // spl level
+			out = fmt.Appendf(out, "%o", code&07)
 		case "%r": // register number at bit 6
 			out = fmt.Appendf(out, "%s", RegNum((code>>6)&07))
 		case "%R": // register number at bit 0
