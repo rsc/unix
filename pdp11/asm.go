@@ -54,6 +54,12 @@ func Asm(pc uint16, text string) (codes []uint16, err error) {
 				panic("emt/trap number out of range")
 			}
 			out[0] |= n
+		case "%N": // spl level
+			n := parseConst(arg)
+			if n != n&0o7 {
+				panic("spl level out of range")
+			}
+			out[0] |= n
 		case "%r": // register number at bit 6
 			out[0] |= uint16(parseReg(arg)) << 6
 		case "%R": // register number at bit 0
