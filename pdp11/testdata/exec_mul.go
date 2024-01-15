@@ -77,7 +77,9 @@ func main() {
 
 					case "div":
 						if r2 == 0 {
-							c, v = true, true
+							// divide by zero sets Z = C = V = 1
+							// verified by CKEBFF0
+							z, c, v = true, true, true
 							break
 						}
 						top := int32(r0)<<16 | int32(r1)
