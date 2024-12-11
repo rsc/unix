@@ -26,6 +26,7 @@ var itab = []instr{
 	{0o000100, xjmp, "jmp %d"},
 	{0o000200, xrts, "rts %R"},
 	{0o000210, xbad, ""},
+	{0o000230, xbad, "spl %N"}, // untested
 	{0o000240, xccc, "nop"},
 	{0o000241, xccc, "clc"},
 	{0o000242, xccc, "clv"},
