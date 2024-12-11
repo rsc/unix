@@ -186,3 +186,15 @@ sec
 mov #177777, r1
 sxt r1
 now r1=177777 nzvc=1001
+
+ccc
+sev
+sec
+now nzvc=0011
+sxt r1
+now nzvc=0101
+
+scc
+now nzvc=1111
+sxt r1
+now r1=177777 nzvc=1001
