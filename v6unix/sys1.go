@@ -11,6 +11,7 @@
 package v6unix
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"slices"
@@ -69,40 +70,20 @@ func sysexec(p *Proc) {
 }
 
 func (p *Proc) exec(aout []byte, argv []string, ip *inode) {
-	// parse header
-	hdr := (*[4]uint16)(unsafe.Pointer(&aout[0]))
 
-	var ts, ds int
-	var sep bool
-	switch hdr[0] {
-	default:
-		p.Error = ENOEXEC
-		return
-	case 0o000407:
-		ds = int(hdr[1]) + int(hdr[2])
-	case 0o000410, 0o000411:
-		ts = int(hdr[1])
-		ds = int(hdr[2])
-		sep = hdr[0]&1 != 0
-	}
-	_ = sep
-	if 0o20+ts+ds > len(aout) || (ts|ds)&1 != 0 {
-		p.Error = ENOEXEC
-		return
-	}
-	const maxText = 50000
-	if ts+ds > maxText {
-		p.Error = E2BIG
+	af, err := ParseAout(bytes.NewBuffer(aout))
+	if af == nil || err != Errno(0) {
+		p.Error = err
 		return
 	}
 
 	const round = 0o20000
-	tsr := (ts + round - 1) &^ (round - 1)
+	tsr := (af.TextSize() + round - 1) &^ (round - 1)
 
 	// lay out new memory image
 	var mem pdp11.ArrayMem
-	copy(mem[:ts], aout[0o20:])
-	copy(mem[tsr:tsr+ds], aout[0o20+ts:])
+	copy(mem[:af.TextSize()], af.Text)
+	copy(mem[tsr:tsr+af.DataSize()], af.Data)
 
 	na := (1 + len(argv) + 1) * 2
 	for _, s := range argv {
@@ -133,14 +114,14 @@ func (p *Proc) exec(aout []byte, argv []string, ip *inode) {
 	sp := ap
 
 	p.Mem = mem
-	if hdr[0] == 0o407 {
-		p.TextSize = hdr[1]
-		p.DataStart = hdr[1]
-		p.DataSize = hdr[2]
+	if af.hdr.MagicNum == 0o407 {
+		p.TextSize = af.hdr.TextSize
+		p.DataStart = af.hdr.TextSize
+		p.DataSize = af.hdr.DataSize
 	} else {
-		p.TextSize = uint16(ts)
+		p.TextSize = af.TextSize()
 		p.DataStart = uint16(tsr)
-		p.DataSize = uint16(ds)
+		p.DataSize = af.DataSize()
 	}
 
 	// TODO check STRC
