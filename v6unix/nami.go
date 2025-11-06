@@ -29,8 +29,10 @@ func (p *Proc) namei(name string, op int) (ip, dp *inode, off int) {
 
 	// If path is empty, keep reference to start directory.
 	if elem, _ := nextElem(name); elem == "" {
-		if op == nameFind {
-			return dp, nil, 0
+		if op == nameDelete {
+			dp.count--
+			p.Error = ENOENT
+			return nil, nil, 0
 		}
 		return dp, nil, 0
 	}

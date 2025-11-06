@@ -536,8 +536,8 @@ func xdiv(cpu *CPU) {
 	if src == 0 {
 		cpu.PS.SetV(true)
 		cpu.PS.SetC(true)
+		cpu.PS.SetZ(true)
 		cpu.PS.SetN(false)
-		cpu.PS.SetZ(false)
 		return
 	}
 	cpu.PS.SetC(false)
